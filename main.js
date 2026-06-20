@@ -21,21 +21,19 @@ if (menuBtn && navLinks) {
 // ==========================================
 // 2. BACKEND CONNECTIONS (VOLUNTEER & DONATION)
 // ==========================================
-
 // --- Handle Volunteer Form Submission ---
-const volunteerForm = document.querySelector('#volunteer form');
+const volunteerForm = document.getElementById('volunteerForm');
 
 if (volunteerForm) {
     volunteerForm.addEventListener('submit', async (e) => {
-        e.preventDefault(); // Stop the page from reloading
+        e.preventDefault(); // This stops the page from reloading and breaking the connection!
 
-        // 1. Grab values from the input fields
-        const fullName = volunteerForm.querySelector('input[placeholder="Full Name"]').value;
-        const email = volunteerForm.querySelector('input[placeholder="Email Address"]').value;
-        const skills = volunteerForm.querySelector('textarea').value;
+        // Grab values cleanly using IDs
+        const fullName = document.getElementById('volunteerName').value;
+        const email = document.getElementById('volunteerEmail').value;
+        const skills = document.getElementById('volunteerSkills').value;
 
         try {
-            // 2. Send the data to the backend server
             const response = await fetch('http://localhost:5000/api/volunteer', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -44,10 +42,9 @@ if (volunteerForm) {
 
             const data = await response.json();
             
-            // 3. Show the server's response to the user
             if (data.success) {
                 alert(data.message);
-                volunteerForm.reset(); // Clear the form fields
+                volunteerForm.reset(); // Clears out the form inputs
             } else {
                 alert("Something went wrong: " + data.message);
             }
@@ -57,6 +54,7 @@ if (volunteerForm) {
         }
     });
 }
+
 
 // --- Handle Donation Button Click ---
 const donateBtn = document.getElementById('donateBtn');
