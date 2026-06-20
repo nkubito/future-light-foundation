@@ -23,9 +23,7 @@
         <a href="#programs">Programs</a>
         <a href="#volunteer">Join Us</a>
         <a href="#gallery">Gallery</a>
-        <a href="#donate" class="btn btn-secondary" style="padding: 10px 24px"
-          >Donate Now</a
-        >
+        <a href="#donate" class="btn btn-secondary" style="padding: 10px 24px">Donate Now</a>
       </div>
     </nav>
 
@@ -105,10 +103,7 @@
       </div>
     </section>
 
-    <section
-      id="donate"
-      style="background: var(--off-white); text-align: center"
-    >
+    <section id="donate" style="background: var(--off-white); text-align: center">
       <div class="section-header">
         <h2>Make an Impact</h2>
         <p>Every donation directly fuels our programs in Rwanda.</p>
@@ -125,12 +120,20 @@
         <p style="margin-bottom: 20px; font-weight: 600">
           One-time or Monthly Gift
         </p>
-       <input type="number" id="donationAmount" placeholder="Enter Amount ($)" />
+        <input type="number" id="donationAmount" placeholder="Enter Amount ($)" style="width: 100%; padding: 10px; margin-bottom: 15px;" />
+        
+        <select id="paymentMethod" style="width: 100%; padding: 10px; margin-bottom: 15px;">
+          <option value="momo">MTN / Airtel Mobile Money</option>
+          <option value="card">Visa / Mastercard</option>
+          <option value="bank">Bank Wire Transfer</option>
+        </select>
 
-<button id="donateBtn" class="btn btn-secondary" style="width: 100%">
-  Proceed to Donate
-</button>
-         
+        <input type="text" id="phoneNumber" placeholder="Phone Number (e.g. 079...)" style="width: 100%; padding: 10px; margin-bottom: 15px;" />
+
+        <button id="donateBtn" class="btn btn-secondary" style="width: 100%">
+          Proceed to Donate
+        </button>
+          
         <p style="margin-top: 15px; font-size: 0.85rem; color: var(--gray)">
           Securely processed via Mobile Money or Wire Transfer.
         </p>
@@ -150,15 +153,14 @@
             contact you within 48 hours.
           </p>
         </div>
-        <form>
-<form id="volunteerForm">
-  <input type="text" id="volunteerName" placeholder="Full Name" required />
-  <input type="email" id="volunteerEmail" placeholder="Email Address" required />
-  <textarea id="volunteerSkills" rows="4" placeholder="Briefly describe your skills..."></textarea>
-  <button type="submit" class="btn btn-primary" style="width: 100%">
-    Submit Interest
-  </button>
-</form>
+        <form id="volunteerForm">
+          <input type="text" id="volunteerName" placeholder="Full Name" required />
+          <input type="email" id="volunteerEmail" placeholder="Email Address" required />
+          <textarea id="volunteerSkills" rows="4" placeholder="Briefly describe your skills..."></textarea>
+          <button type="submit" class="btn btn-primary" style="width: 100%">
+            Submit Interest
+          </button>
+        </form>
       </div>
     </section>
 
@@ -168,22 +170,10 @@
         <p>Seeing is believing. Take a look at our recent work.</p>
       </div>
       <div class="gallery-grid">
-        <img
-          src="https://images.unsplash.com/photo-1542810634-71277d95dcbb?q=80&w=2070&auto=format&fit=crop"
-          alt="Volunteer work"
-        />
-        <img
-          src="https://images.unsplash.com/photo-1489710437720-ebb67ec84dd2?q=80&w=2070&auto=format&fit=crop"
-          alt="Child laughing"
-        />
-        <img
-          src="https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?q=80&w=2006&auto=format&fit=crop"
-          alt="Classroom"
-        />
-        <img
-          src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?q=80&w=1972&auto=format&fit=crop"
-          alt="Group of children"
-        />
+        <img src="https://images.unsplash.com/photo-1542810634-71277d95dcbb?q=80&w=2070&auto=format&fit=crop" alt="Volunteer work" />
+        <img src="https://images.unsplash.com/photo-1489710437720-ebb67ec84dd2?q=80&w=2070&auto=format&fit=crop" alt="Child laughing" />
+        <img src="https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?q=80&w=2006&auto=format&fit=crop" alt="Classroom" />
+        <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?q=80&w=1972&auto=format&fit=crop" alt="Group of children" />
       </div>
     </section>
 
@@ -192,38 +182,24 @@
         <div>
           <a href="#" class="logo" style="color: white">Future Light</a>
           <p style="margin-top: 15px; color: #cbd5e1">
-            A registered NGO dedicated to empowering children through
-            sustainable development.
+            A registered NGO dedicated to empowering children through sustainable development.
           </p>
         </div>
         <div>
           <h4>Contact</h4>
           <p style="color: #cbd5e1; margin-top: 15px">Kigali, Rwanda</p>
-          <p style="color: #cbd5e1">foundationfuture@gmail.com</p>
+          <p style="color: #cbd5e1">foundationfuturelight@gmail.com</p>
         </div>
         <div>
           <h4>Follow Our Progress</h4>
           <div class="social-links">
-            <a href="https://wa.me/250790161576"
-              ><i class="fab fa-whatsapp"></i
-            ></a>
-            <a href="https://instagram.com/futurelight_foundation"
-              ><i class="fab fa-instagram"></i
-            ></a>
+            <a href="https://wa.me/250790161576"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://instagram.com/futurelight_foundation"><i class="fab fa-instagram"></i></a>
           </div>
         </div>
       </div>
-      <div
-        style="
-          border-top: 1px solid #334155;
-          padding-top: 30px;
-          text-align: center;
-          color: #94a3b8;
-          font-size: 0.85rem;
-        "
-      >
-        &copy; 2026 Future Light Foundation | N.K.U.B.I.T.O | All Rights
-        Reserved.
+      <div style="border-top: 1px solid #334155; padding-top: 30px; text-align: center; color: #94a3b8; font-size: 0.85rem;">
+        &copy; 2026 Future Light Foundation | N.K.U.B.I.T.O | All Rights Reserved.
       </div>
     </footer>
     <script src="./main.js"></script>
