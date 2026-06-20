@@ -15,17 +15,25 @@
   scroll-behavior: smooth;
 }
 
+/* --- Fixed Layout Structure for Vertical Scrolling --- */
+html, body {
+  width: 100%;
+  overflow-x: hidden; /* Stops horizontal side-scrolling completely */
+}
+
 body {
   font-family: "Plus Jakarta Sans", sans-serif;
   background-color: var(--light);
   color: var(--dark);
   line-height: 1.7;
+  display: flex;
+  flex-direction: column; /* Explicitly forces every section to stack on top of each other */
 }
 
-/* --- Navigation --- */
+/* --- Navigation Container Fix --- */
 nav {
   background: var(--light);
-  padding: 1.2rem 8%;
+  padding: 0.8rem 8%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -33,14 +41,23 @@ nav {
   top: 0;
   z-index: 1000;
   border-bottom: 1px solid var(--border);
+  width: 100%;
 }
 
+/* --- Fixed Logo Constraints --- */
 .logo {
-  font-weight: 800;
-  font-size: 1.4rem;
-  color: var(--primary);
-  letter-spacing: -0.5px;
+  display: flex;
+  align-items: center;
   text-decoration: none;
+  height: 55px; /* Locks structural layout height */
+}
+
+.logo img {
+  height: 55px !important;
+  width: 55px !important;
+  object-fit: contain;
+  border-radius: 50%; /* Maintains your sharp circular logo frame */
+  vertical-align: middle;
 }
 
 .nav-links {
@@ -76,6 +93,7 @@ header {
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  width: 100%;
 }
 
 .hero-image {
@@ -144,6 +162,8 @@ header p {
 /* --- General Sections --- */
 section {
   padding: 100px 10%;
+  width: 100%;
+  clear: both; /* Prevents floating elements from corrupting the layout stream */
 }
 
 .section-header {
@@ -257,6 +277,7 @@ footer {
   background: var(--dark);
   color: white;
   padding: 80px 10% 40px;
+  width: 100%;
 }
 
 .footer-grid {
