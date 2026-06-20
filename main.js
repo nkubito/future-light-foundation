@@ -9,7 +9,6 @@ if (menuBtn && navLinks) {
         navLinks.classList.toggle("active");
     });
 
-    // Close menu on link click (mobile)
     document.querySelectorAll(".nav-links a").forEach((link) => {
         link.addEventListener("click", () => {
             navLinks.classList.remove("active");
@@ -21,14 +20,14 @@ if (menuBtn && navLinks) {
 // ==========================================
 // 2. BACKEND CONNECTIONS (VOLUNTEER & DONATION)
 // ==========================================
+
 // --- Handle Volunteer Form Submission ---
 const volunteerForm = document.getElementById('volunteerForm');
 
 if (volunteerForm) {
     volunteerForm.addEventListener('submit', async (e) => {
-        e.preventDefault(); // This stops the page from reloading and breaking the connection!
+        e.preventDefault(); 
 
-        // Grab values cleanly using IDs
         const fullName = document.getElementById('volunteerName').value;
         const email = document.getElementById('volunteerEmail').value;
         const skills = document.getElementById('volunteerSkills').value;
@@ -44,7 +43,7 @@ if (volunteerForm) {
             
             if (data.success) {
                 alert(data.message);
-                volunteerForm.reset(); // Clears out the form inputs
+                volunteerForm.reset(); 
             } else {
                 alert("Something went wrong: " + data.message);
             }
@@ -62,7 +61,12 @@ const donateBtn = document.getElementById('donateBtn');
 if (donateBtn) {
     donateBtn.addEventListener('click', async () => {
         const amountInput = document.getElementById('donationAmount');
+        const methodInput = document.getElementById('paymentMethod');
+        const phoneInput = document.getElementById('phoneNumber');
+
         const amount = amountInput ? amountInput.value : 0;
+        const paymentMethod = methodInput ? methodInput.value : 'momo';
+        const phoneNumber = phoneInput ? phoneInput.value : '';
 
         if (!amount || amount <= 0) {
             alert("Please enter a valid amount first.");
@@ -70,15 +74,18 @@ if (donateBtn) {
         }
 
         try {
-            // Send the donation amount to the backend
             const response = await fetch('http://localhost:5000/api/donate', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ amount: parseFloat(amount) })
+                body: JSON.stringify({ 
+                    amount: parseFloat(amount),
+                    paymentMethod: paymentMethod,
+                    phoneNumber: phoneNumber
+                })
             });
 
             const data = await response.json();
-            alert(`${data.message}\nMerchant Number: ${data.paymentNumber}`);
+            alert(data.message);
         } catch (error) {
             console.error("Error:", error);
             alert("Could not process donation request.");
