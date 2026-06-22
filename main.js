@@ -5,202 +5,197 @@ const menuBtn = document.getElementById("menuBtn");
 const navLinks = document.getElementById("navLinks");
 
 if (menuBtn && navLinks) {
-    menuBtn.addEventListener("click", () => {
-        navLinks.classList.toggle("active");
-    });
+    menuBtn.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+    });
 
-    document.querySelectorAll(".nav-links > a").forEach((link) => {
-        link.addEventListener("click", () => {
-            navLinks.classList.remove("active");
-        });
-    });
+    document.querySelectorAll(".nav-links > a").forEach((link) => {
+        link.addEventListener("click", () => {
+            navLinks.classList.remove("active");
+        });
+    });
 }
 
 // ==========================================
 // 2. INTERNATIONAL 3-STEP DONATION NAVIGATION
 // ==========================================
-let selectedMethodTracker = ''; // Tracks chosen method ('momo', 'card', 'bank')
+let selectedMethodTracker = ''; 
 
 function toStep2() {
-    const amount = document.getElementById('global-amount').value;
-    if (!amount || parseFloat(amount) <= 0) {
-        alert("Please enter a valid donation amount first.");
-        return;
-    }
-    document.getElementById('don-step-1').style.display = 'none';
-    document.getElementById('don-step-2').style.display = 'block';
-    document.getElementById('don-step-3').style.display = 'none';
+    const amount = document.getElementById('global-amount').value;
+    if (!amount || parseFloat(amount) <= 0) {
+        alert("Please enter a valid donation amount first.");
+        return;
+    }
+    document.getElementById('don-step-1').style.display = 'none';
+    document.getElementById('don-step-2').style.display = 'block';
+    document.getElementById('don-step-3').style.display = 'none';
 }
 
 function toStep1() {
-    document.getElementById('don-step-2').style.display = 'none';
-    document.getElementById('don-step-1').style.display = 'block';
+    document.getElementById('don-step-2').style.display = 'none';
+    document.getElementById('don-step-1').style.display = 'block';
 }
 
 function toStep3(method) {
-    selectedMethodTracker = method;
-    document.getElementById('don-step-2').style.display = 'none';
-    document.getElementById('don-step-3').style.display = 'block';
+    selectedMethodTracker = method;
+    document.getElementById('don-step-2').style.display = 'none';
+    document.getElementById('don-step-3').style.display = 'block';
 
-    // Hide all input parameter blocks initially
-    document.getElementById('fields-momo').style.display = 'none';
-    document.getElementById('fields-card').style.display = 'none';
-    document.getElementById('fields-bank').style.display = 'none';
+    document.getElementById('fields-momo').style.display = 'none';
+    document.getElementById('fields-card').style.display = 'none';
+    document.getElementById('fields-bank').style.display = 'none';
 
-    // Dynamically reveal only the chosen fields screen
-    document.getElementById(`fields-${method}`).style.display = 'block';
+    document.getElementById(`fields-${method}`).style.display = 'block';
 }
 
 function backToStep2() {
-    document.getElementById('don-step-3').style.display = 'none';
-    document.getElementById('don-step-2').style.display = 'block';
+    document.getElementById('don-step-3').style.display = 'none';
+    document.getElementById('don-step-2').style.display = 'block';
 }
 
-// --- Team Card Toggle Feature ---
+function selectQuickAmount(val) {
+    const amountInput = document.getElementById('global-amount');
+    if (amountInput) {
+        amountInput.value = val;
+        toStep2();
+    }
+}
+
 function toggleTeamCard(cardElement) {
-    const details = cardElement.querySelector('.team-details');
-    const indicator = cardElement.querySelector('.expand-indicator i');
-    
-    // Check if this card is already expanded
-    const isExpanded = cardElement.classList.contains('expanded');
-    
-    // Collapse any open team cards first
-    document.querySelectorAll('.team-card').forEach(card => {
-        card.classList.remove('expanded');
-        const cardDetails = card.querySelector('.team-details');
-        const cardIndicator = card.querySelector('.expand-indicator i');
-        if (cardDetails) {
-            cardDetails.style.maxHeight = '0';
-            cardDetails.style.opacity = '0';
-        }
-        if (cardIndicator) {
-            cardIndicator.className = 'fas fa-chevron-down';
-        }
-    });
+    const details = cardElement.querySelector('.team-details');
+    const indicator = cardElement.querySelector('.expand-indicator i');
+    const isExpanded = cardElement.classList.contains('expanded');
+    
+    document.querySelectorAll('.team-card').forEach(card => {
+        card.classList.remove('expanded');
+        const cardDetails = card.querySelector('.team-details');
+        const cardIndicator = card.querySelector('.expand-indicator i');
+        if (cardDetails) {
+            cardDetails.style.maxHeight = '0';
+            cardDetails.style.opacity = '0';
+        }
+        if (cardIndicator) {
+            cardIndicator.className = 'fas fa-chevron-down';
+        }
+    });
 
-    // If it wasn't expanded, open it cleanly
-    if (!isExpanded && details) {
-        cardElement.classList.add('expanded');
-        details.style.maxHeight = details.scrollHeight + 'px';
-        details.style.opacity = '1';
-        if (indicator) {
-            indicator.className = 'fas fa-chevron-up';
-        }
-    }
+    if (!isExpanded && details) {
+        cardElement.classList.add('expanded');
+        details.style.maxHeight = details.scrollHeight + 'px';
+        details.style.opacity = '1';
+        if (indicator) {
+            indicator.className = 'fas fa-chevron-up';
+        }
+    }
 }
 
-// Make functions globally available for inline HTML onclick attributes
 window.toStep2 = toStep2;
 window.toStep1 = toStep1;
 window.toStep3 = toStep3;
 window.backToStep2 = backToStep2;
+window.selectQuickAmount = selectQuickAmount;
 window.toggleTeamCard = toggleTeamCard;
 
 // ==========================================
 // 3. BACKEND CONNECTIONS & SUBMISSIONS
 // ==========================================
-
-// --- Handle Volunteer Form Submission ---
 const volunteerForm = document.getElementById('volunteerForm');
 
 if (volunteerForm) {
-    volunteerForm.addEventListener('submit', async (e) => {
-        e.preventDefault(); 
+    volunteerForm.addEventListener('submit', async (e) => {
+        e.preventDefault(); 
 
-        const fullName = document.getElementById('volunteerName').value;
-        const email = document.getElementById('volunteerEmail').value;
-        const skills = document.getElementById('volunteerSkills').value;
+        const fullName = document.getElementById('volunteerName').value;
+        const email = document.getElementById('volunteerEmail').value;
+        const skills = document.getElementById('volunteerSkills').value;
 
-        try {
-            const response = await fetch('https://future-light-backend.onrender.com/api/volunteer', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ fullName, email, skills })
-            });
+        try {
+            const response = await fetch('https://future-light-backend.onrender.com/api/volunteer', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ fullName, email, skills })
+            });
 
-            const data = await response.json();
-            
-            if (data.success) {
-                alert(data.message);
-                volunteerForm.reset(); 
-            } else {
-                alert("Something went wrong: " + data.message);
-            }
-        } catch (error) {
-            console.error("Error:", error);
-            alert("Could not connect to the backend server. Is it running?");
-        }
-    });
+            const data = await response.json();
+            
+            if (data.success) {
+                alert(data.message);
+                volunteerForm.reset(); 
+            } else {
+                alert("Something went wrong: " + data.message);
+            }
+        } catch (error) {
+            console.error("Error:", error);
+            alert("Could not connect to the backend server. Is it running?");
+        }
+    });
 }
 
-// --- Handle Dynamic 3-Step Donation Submission ---
 document.addEventListener('DOMContentLoaded', () => {
-    const dynamicPayForm = document.getElementById('dynamic-payment-form');
-    
-    if (dynamicPayForm) {
-        dynamicPayForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            const amount = document.getElementById('global-amount').value;
-            let payload = { 
-                paymentMethod: selectedMethodTracker,
-                amount: parseFloat(amount) || 0 
-            };
+    const dynamicPayForm = document.getElementById('dynamic-payment-form');
+    
+    if (dynamicPayForm) {
+        dynamicPayForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const amount = document.getElementById('global-amount').value;
+            let payload = { 
+                paymentMethod: selectedMethodTracker,
+                amount: parseFloat(amount) || 0 
+            };
 
-            // Read variables directly based on the active chosen branch
-            if (selectedMethodTracker === 'momo') {
-                payload.firstName = document.getElementById('momo-first').value;
-                payload.lastName = document.getElementById('momo-last').value;
-                payload.email = document.getElementById('momo-email').value;
-                const dialCode = document.getElementById('momo-country').value;
-                const localNum = document.getElementById('momo-phone').value;
-                payload.phoneNumber = `${dialCode}${localNum.replace(/\s+/g, '')}`;
-            } 
-            else if (selectedMethodTracker === 'card') {
-                payload.firstName = document.getElementById('card-first').value;
-                payload.lastName = document.getElementById('card-last').value;
-                payload.email = document.getElementById('card-email').value;
-                payload.cardNumber = document.getElementById('card-number').value;
-                payload.cardExpiry = document.getElementById('card-expiry').value;
-                payload.cardCvc = document.getElementById('card-cvc').value;
-            } 
-            else if (selectedMethodTracker === 'bank') {
-                payload.fullName = document.getElementById('bank-name').value;
-                payload.email = document.getElementById('bank-email').value;
-                payload.amount = 0; // Wire transfers utilize direct instruction emails
-            }
+            if (selectedMethodTracker === 'momo') {
+                payload.firstName = document.getElementById('momo-first').value;
+                payload.lastName = document.getElementById('momo-last').value;
+                payload.email = document.getElementById('momo-email').value;
+                const dialCode = document.getElementById('momo-country').value;
+                const localNum = document.getElementById('momo-phone').value;
+                payload.phoneNumber = `${dialCode}${localNum.replace(/\s+/g, '')}`;
+            } 
+            else if (selectedMethodTracker === 'card') {
+                payload.firstName = document.getElementById('card-first').value;
+                payload.lastName = document.getElementById('card-last').value;
+                payload.email = document.getElementById('card-email').value;
+                payload.cardNumber = document.getElementById('card-number').value;
+                payload.cardExpiry = document.getElementById('card-expiry').value;
+                payload.cardCvc = document.getElementById('card-cvc').value;
+            } 
+            else if (selectedMethodTracker === 'bank') {
+                payload.fullName = document.getElementById('bank-name').value;
+                payload.email = document.getElementById('bank-email').value;
+                payload.amount = 0; 
+            }
 
-            // Fallback validation checks before pushing upstream
-            if (selectedMethodTracker !== 'bank' && (!payload.amount || payload.amount <= 0)) {
-                alert("Please select a valid amount first.");
-                return;
-            }
+            if (selectedMethodTracker !== 'bank' && (!payload.amount || payload.amount <= 0)) {
+                alert("Please select a valid amount first.");
+                return;
+            }
 
-            if (!payload.email) {
-                alert("Please supply an email address.");
-                return;
-            }
+            if (!payload.email) {
+                alert("Please supply an email address.");
+                return;
+            }
 
-            try {
-                const response = await fetch('https://future-light-backend.onrender.com/api/donate', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
+            try {
+                const response = await fetch('https://future-light-backend.onrender.com/api/donate', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
 
-                const data = await response.json();
-                alert(data.message || "Thank you! Transaction processed.");
-                
-                if (response.ok) {
-                    // Reset everything cleanly and slide back to Step 1
-                    dynamicPayForm.reset();
-                    document.getElementById('global-amount').value = '';
-                    toStep1();
-                }
-            } catch (error) {
-                console.error("Error Processing Donation:", error);
-                alert("Could not process donation request securely at this time.");
-            }
-        });
-    }
+                const data = await response.json();
+                alert(data.message || "Thank you! Transaction processed.");
+                
+                if (response.ok) {
+                    dynamicPayForm.reset();
+                    document.getElementById('global-amount').value = '';
+                    toStep1();
+                }
+            } catch (error) {
+                console.error("Error Processing Donation:", error);
+                alert("Could not process donation request securely at this time.");
+            }
+        });
+    }
 });
