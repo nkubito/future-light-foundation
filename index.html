@@ -93,8 +93,8 @@
       </div>
     </section>
 
-  <!-- ==========================================
-         UPDATED MEET OUR TEAM SECTION
+    <!-- ==========================================
+         UPDATED MEET OUR TEAM SECTION (DYNAMIC CARDS ONLY)
          ========================================== -->
     <section id="team" style="padding: 60px 20px;">
       <div class="section-header" style="text-align: center; margin-bottom: 40px;">
@@ -102,38 +102,65 @@
         <p class="sub-title">The local hearts running our daily outreach operations on the ground.</p>
       </div>
       <div class="grid-3" style="max-width: 1000px; margin: 0 auto;">
-        
-        <!-- Founder & Lead Card (Updated with tuyishime.jpeg) -->
-        <div class="card" style="text-align: center; padding: 30px 20px;">
+         
+        <!-- Founder & Lead Card -->
+        <div class="card team-card" onclick="toggleTeamCard(this)" style="text-align: center; padding: 30px 20px; cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); overflow: hidden;">
           <div style="width: 120px; height: 120px; border-radius: 50%; border: 3px solid #00bcff; padding: 2px; margin: 0 auto 15px auto; overflow: hidden; display: flex; align-items: center; justify-content: center;">
             <img src="./tuyishime.jpeg" alt="Founder & Lead Photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;" />
           </div>
-          <h3 style="margin-bottom: 5px;">Founder & Lead</h3>
-          <p style="color: #ff6b00; font-weight: 700; font-size: 0.9rem; margin-bottom: 10px;">Visionary Director</p>
-          <p style="font-size: 0.9rem; color: var(--gray);">Dedicated to reshaping paths for orphans and vulnerable kids across local communities.</p>
+          <h3 style="margin-bottom: 5px;">TUYISHIME Emmanuel</h3>
+          <p style="color: #ff6b00; font-weight: 700; font-size: 0.9rem; margin-bottom: 10px;">Founder & Visionary Director</p>
+          
+          <!-- Hidden Details Container inside Card -->
+          <div class="team-details" style="max-height: 0; opacity: 0; overflow: hidden; transition: all 0.3s ease;">
+            <p style="font-size: 0.9rem; color: var(--gray); margin-top: 10px; line-height: 1.5;">Dedicated to reshaping paths for orphans and vulnerable kids across local communities by building a lasting family structure from personal experience.</p>
+            <div style="display: flex; justify-content: center; gap: 15px; margin-top: 15px; font-size: 1.1rem;">
+              <a href="mailto:foundationfuturelight@gmail.com" style="color: #64748b;"><i class="fas fa-envelope"></i></a>
+              <a href="https://instagram.com/futurelight_foundation" target="_blank" style="color: #64748b;"><i class="fab fa-instagram"></i></a>
+              <a href="https://wa.me/250790161576" target="_blank" style="color: #64748b;"><i class="fab fa-whatsapp"></i></a>
+            </div>
+          </div>
+          <div class="expand-indicator" style="margin-top: 15px; font-size: 0.8rem; color: #94a3b8; font-weight: 600;"><i class="fas fa-chevron-down"></i> Read Story</div>
         </div>
 
-        <!-- Programs Team Card (Ready for your programs image file) -->
-        <div class="card" style="text-align: center; padding: 30px 20px;">
+        <!-- Programs Team Card -->
+        <div class="card team-card" onclick="toggleTeamCard(this)" style="text-align: center; padding: 30px 20px; cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); overflow: hidden;">
           <div style="width: 120px; height: 120px; border-radius: 50%; border: 3px solid #00bcff; padding: 2px; margin: 0 auto 15px auto; overflow: hidden; display: flex; align-items: center; justify-content: center;">
             <img src="./tuyishime.jpeg" alt="Programs Team Photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&auto=format&fit=crop'"/>
           </div>
-          <h3 style="margin-bottom: 5px;">Programs Team</h3>
-          <p style="color: #ff6b00; font-weight: 700; font-size: 0.9rem; margin-bottom: 10px;">Field Management</p>
-          <p style="font-size: 0.9rem; color: var(--gray);">Directly monitoring community nutrition lines and arranging localized resource shipments.</p>
+          <h3 style="margin-bottom: 5px;">Rugamba Nkubito</h3>
+          <p style="color: #ff6b00; font-weight: 700; font-size: 0.9rem; margin-bottom: 10px;">Dev & Programs Lead</p>
+          
+          <!-- Hidden Details Container inside Card -->
+          <div class="team-details" style="max-height: 0; opacity: 0; overflow: hidden; transition: all 0.3s ease;">
+            <p style="font-size: 0.9rem; color: var(--gray); margin-top: 10px; line-height: 1.5;">Directly monitoring community nutrition lines, managing backend logistics optimization, and arranging resource distribution systems.</p>
+            <div style="display: flex; justify-content: center; gap: 15px; margin-top: 15px; font-size: 1.1rem;">
+              <a href="mailto:foundationfuturelight@gmail.com" style="color: #64748b;"><i class="fas fa-envelope"></i></a>
+              <a href="#" style="color: #64748b;"><i class="fab fa-linkedin"></i></a>
+            </div>
+          </div>
+          <div class="expand-indicator" style="margin-top: 15px; font-size: 0.8rem; color: #94a3b8; font-weight: 600;"><i class="fas fa-chevron-down"></i> Read Story</div>
         </div>
 
         <!-- Volunteers Card -->
-        <div class="card" style="text-align: center; padding: 30px 20px;">
+        <div class="card team-card" onclick="toggleTeamCard(this)" style="text-align: center; padding: 30px 20px; cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); overflow: hidden;">
           <div style="width: 120px; height: 120px; border-radius: 50%; background: #e2e8f0; margin: 0 auto 15px auto; display: flex; align-items: center; justify-content: center; color: #64748b; font-size: 2.2rem;"><i class="fas fa-hands-helping"></i></div>
-          <h3 style="margin-bottom: 5px;">Volunteers</h3>
-          <p style="color: #ff6b00; font-weight: 700; font-size: 0.9rem; margin-bottom: 10px;">Community Educators</p>
-          <p style="font-size: 0.9rem; color: var(--gray);">Local youth mentors offering tutoring, school logistics assistance, and care support lines.</p>
+          <h3 style="margin-bottom: 5px;">Community Volunteers</h3>
+          <p style="color: #ff6b00; font-weight: 700; font-size: 0.9rem; margin-bottom: 10px;">Educators & Mentors</p>
+          
+          <!-- Hidden Details Container inside Card -->
+          <div class="team-details" style="max-height: 0; opacity: 0; overflow: hidden; transition: all 0.3s ease;">
+            <p style="font-size: 0.9rem; color: var(--gray); margin-top: 10px; line-height: 1.5;">Local youth mentors offering regular weekend tutoring, foundational school logistics assistance, and care line outreach support.</p>
+            <div style="display: flex; justify-content: center; gap: 15px; margin-top: 15px; font-size: 1.1rem;">
+              <a href="#volunteer" style="color: var(--secondary); font-weight: 700; font-size: 0.85rem; text-decoration: none;">Join This Group <i class="fas fa-arrow-right" style="margin-left:4px;"></i></a>
+            </div>
+          </div>
+          <div class="expand-indicator" style="margin-top: 15px; font-size: 0.8rem; color: #94a3b8; font-weight: 600;"><i class="fas fa-chevron-down"></i> View Details</div>
         </div>
 
       </div>
     </section>
-   
+    
     <section id="financials" style="background: var(--off-white); padding: 60px 20px;">
       <div style="max-width: 700px; margin: 0 auto; background: white; padding: 35px; border-radius: 12px; border: 1px solid var(--border);">
         <h2 style="font-size: 1.8rem; color: #1e293b; margin-bottom: 10px; font-weight: 800; text-align: center;">Transparency & Financial Policies</h2>
@@ -192,7 +219,8 @@
         </div>
       </div>
     </section>
-<!-- ==========================================
+
+    <!-- ==========================================
          INTERNATIONAL 3-STEP PURE PROGRESSIVE DONATION
          ========================================== -->
     <section id="donate" style="background: var(--off-white); padding: 100px 10%; font-family: 'Plus Jakarta Sans', sans-serif;">
@@ -200,9 +228,9 @@
         <h2>Make an Impact with Us</h2>
         <p class="sub-title">Your generosity directly funds nutrition, education, and community development programs.</p>
       </div>
-      
+       
       <div style="max-width: 500px; margin: 0 auto; background: white; padding: 35px; border: 1px solid var(--border); border-radius: 12px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); min-height: 320px; display: flex; flex-direction: column; justify-content: space-between;">
-        
+         
         <!-- STEP 1: ENTER AMOUNT -->
         <div id="don-step-1">
           <label style="font-weight: 700; font-size: 1.1rem; color: #1e293b; display: block; margin-bottom: 20px; text-align: center;">Enter Donation Amount (USD $)</label>
@@ -219,7 +247,7 @@
             <i class="fas fa-arrow-left" style="color: var(--gray); font-size: 0.9rem;"></i> <span style="font-size: 0.9rem; color: var(--gray); font-weight: 600;">Change amount</span>
           </div>
           <p style="font-weight: 700; font-size: 1.1rem; color: #1e293b; margin-bottom: 20px; text-align: center;">Choose how you want to pay</p>
-          
+           
           <div style="display: flex; flex-direction: column; gap: 12px;">
             <!-- MoMo Button -->
             <div onclick="toStep3('momo')" style="display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; border: 2px solid #e2e8f0; border-radius: 8px; cursor: pointer; transition: 0.2s; background: #fafafa;" onmouseover="this.style.borderColor='var(--secondary)'" onmouseout="this.style.borderColor='#e2e8f0'">
