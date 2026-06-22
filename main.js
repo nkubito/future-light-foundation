@@ -33,7 +33,8 @@ if (volunteerForm) {
         const skills = document.getElementById('volunteerSkills').value;
 
         try {
-            const response = await fetch('http://localhost:5000/api/volunteer', {
+            // Updated to live Render backend cloud URL
+            const response = await fetch('https://future-light-backend.onrender.com/api/volunteer', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ fullName, email, skills })
@@ -74,7 +75,8 @@ if (donateBtn) {
         }
 
         try {
-            const response = await fetch('http://localhost:5000/api/donate', {
+            // Updated to live Render backend cloud URL
+            const response = await fetch('https://future-light-backend.onrender.com/api/donate', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ 
