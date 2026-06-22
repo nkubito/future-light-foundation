@@ -17,29 +17,53 @@ if (menuBtn && navLinks) {
 }
 
 // ==========================================
-// 2. STRIPE-STYLE ACCORDION CONTROLLER
+// 2. INTERNATIONAL 3-STEP DONATION NAVIGATION
 // ==========================================
-function switchAccordion(selectedMethod) {
-    // Force set corresponding hidden radio button input state to true
-    const targetRadio = document.getElementById(`radio-${selectedMethod}`);
-    if (targetRadio) targetRadio.checked = true;
+let selectedMethodTracker = ''; // Tracks chosen method ('momo', 'card', 'bank')
 
-    // Toggle panels visibility
-    const methods = ['momo', 'card', 'bank'];
-    methods.forEach(method => {
-        const panel = document.getElementById(`panel-${method}`);
-        if (panel) {
-            if (method === selectedMethod) {
-                panel.style.display = 'block';
-            } else {
-                panel.style.display = 'none';
-            }
-        }
-    });
+function toStep2() {
+    const amount = document.getElementById('global-amount').value;
+    if (!amount || parseFloat(amount) <= 0) {
+        alert("Please enter a valid donation amount first.");
+        return;
+    }
+    document.getElementById('don-step-1').style.display = 'none';
+    document.getElementById('don-step-2').style.display = 'block';
+    document.getElementById('don-step-3').style.display = 'none';
 }
 
+function toStep1() {
+    document.getElementById('don-step-2').style.display = 'none';
+    document.getElementById('don-step-1').style.display = 'block';
+}
+
+function toStep3(method) {
+    selectedMethodTracker = method;
+    document.getElementById('don-step-2').style.display = 'none';
+    document.getElementById('don-step-3').style.display = 'block';
+
+    // Hide all input parameter blocks initially
+    document.getElementById('fields-momo').style.display = 'none';
+    document.getElementById('fields-card').style.display = 'none';
+    document.getElementById('fields-bank').style.display = 'none';
+
+    // Dynamically reveal only the chosen fields screen
+    document.getElementById(`fields-${method}`).style.display = 'block';
+}
+
+function backToStep2() {
+    document.getElementById('don-step-3').style.display = 'none';
+    document.getElementById('don-step-2').style.display = 'block';
+}
+
+// Make functions globally available for inline HTML onclick attributes
+window.toStep2 = toStep2;
+window.toStep1 = toStep1;
+window.toStep3 = toStep3;
+window.backToStep2 = backToStep2;
+
 // ==========================================
-// 3. BACKEND CONNECTIONS (VOLUNTEER & ACCORDION DONATIONS)
+// 3. BACKEND CONNECTIONS & SUBMISSIONS
 // ==========================================
 
 // --- Handle Volunteer Form Submission ---
@@ -75,87 +99,73 @@ if (volunteerForm) {
     });
 }
 
-// --- Dynamic Dynamic Accordion Submission Logic ---
+// --- Handle Dynamic 3-Step Donation Submission ---
 document.addEventListener('DOMContentLoaded', () => {
-    const donateSection = document.getElementById('donate');
+    const dynamicPayForm = document.getElementById('dynamic-payment-form');
     
-    if (donateSection) {
-        donateSection.addEventListener('click', async (e) => {
-            // Check if the clicked target element is one of our payment buttons
-            if (e.target && e.target.tagName === 'BUTTON' && e.target.classList.contains('btn-secondary')) {
-                e.preventDefault();
+    if (dynamicPayForm) {
+        dynamicPayForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const amount = document.getElementById('global-amount').value;
+            let payload = { 
+                paymentMethod: selectedMethodTracker,
+                amount: parseFloat(amount) || 0 
+            };
+
+            // Read variables directly based on the active chosen branch
+            if (selectedMethodTracker === 'momo') {
+                payload.firstName = document.getElementById('momo-first').value;
+                payload.lastName = document.getElementById('momo-last').value;
+                payload.email = document.getElementById('momo-email').value;
+                const dialCode = document.getElementById('momo-country').value;
+                const localNum = document.getElementById('momo-phone').value;
+                payload.phoneNumber = `${dialCode}${localNum.replace(/\s+/g, '')}`;
+            } 
+            else if (selectedMethodTracker === 'card') {
+                payload.firstName = document.getElementById('card-first').value;
+                payload.lastName = document.getElementById('card-last').value;
+                payload.email = document.getElementById('card-email').value;
+                payload.cardNumber = document.getElementById('card-number').value;
+                payload.cardExpiry = document.getElementById('card-expiry').value;
+                payload.cardCvc = document.getElementById('card-cvc').value;
+            } 
+            else if (selectedMethodTracker === 'bank') {
+                payload.fullName = document.getElementById('bank-name').value;
+                payload.email = document.getElementById('bank-email').value;
+                payload.amount = 0; // Wire transfers utilize direct instruction emails
+            }
+
+            // Fallback validation checks before pushing upstream
+            if (selectedMethodTracker !== 'bank' && (!payload.amount || payload.amount <= 0)) {
+                alert("Please select a valid amount first.");
+                return;
+            }
+
+            if (!payload.email) {
+                alert("Please supply an email address.");
+                return;
+            }
+
+            try {
+                const response = await fetch('https://future-light-backend.onrender.com/api/donate', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const data = await response.json();
+                alert(data.message || "Thank you! Transaction processed.");
                 
-                // Track down which option is currently selected
-                const activeRadio = document.querySelector('input[name="payMethod"]:checked');
-                if (!activeRadio) return;
-                
-                const paymentMethod = activeRadio.id.replace('radio-', ''); // 'momo', 'card', or 'bank'
-                const panel = document.getElementById(`panel-${paymentMethod}`);
-                
-                // Dynamic Payload Construction based on open card context
-                let payload = { paymentMethod: paymentMethod };
-                let amount = 0;
-
-                if (paymentMethod === 'momo') {
-                    const inputs = panel.querySelectorAll('input');
-                    const select = panel.querySelector('select');
-                    
-                    payload.firstName = inputs[0].value;
-                    payload.lastName = inputs[1].value;
-                    payload.email = inputs[2].value;
-                    payload.phoneNumber = `${select.value}${inputs[3].value.replace(/\s+/g, '')}`;
-                    amount = inputs[4].value;
-                } 
-                else if (paymentMethod === 'card') {
-                    const inputs = panel.querySelectorAll('input');
-                    
-                    payload.firstName = inputs[0].value;
-                    payload.lastName = inputs[1].value;
-                    payload.email = inputs[2].value;
-                    payload.cardNumber = inputs[3].value;
-                    payload.cardExpiry = inputs[4].value;
-                    payload.cardCvc = inputs[5].value;
-                    amount = inputs[6].value;
-                } 
-                else if (paymentMethod === 'bank') {
-                    const inputs = panel.querySelectorAll('input');
-                    payload.fullName = inputs[0].value;
-                    payload.email = inputs[1].value;
-                    amount = 0; // Wire instruction triggers default placeholder email
+                if (response.ok) {
+                    // Reset everything cleanly and slide back to Step 1
+                    dynamicPayForm.reset();
+                    document.getElementById('global-amount').value = '';
+                    toStep1();
                 }
-
-                payload.amount = parseFloat(amount) || 0;
-
-                // Validate basic amounts for non-wire transfers
-                if (paymentMethod !== 'bank' && (!payload.amount || payload.amount <= 0)) {
-                    alert("Please enter a valid amount first.");
-                    return;
-                }
-
-                // Verify basic email input is filled out safely
-                if (!payload.email) {
-                    alert("Please provide your email address to log transaction tokens.");
-                    return;
-                }
-
-                try {
-                    const response = await fetch('https://future-light-backend.onrender.com/api/donate', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
-                    });
-
-                    const data = await response.json();
-                    alert(data.message || "Request initialized successfully!");
-                    
-                    // Clear inputs inside the active block safely on success 
-                    if (response.ok) {
-                        panel.querySelectorAll('input').forEach(input => input.value = '');
-                    }
-                } catch (error) {
-                    console.error("Error Processing Donation:", error);
-                    alert("Could not process donation request securely at this time.");
-                }
+            } catch (error) {
+                console.error("Error Processing Donation:", error);
+                alert("Could not process donation request securely at this time.");
             }
         });
     }
