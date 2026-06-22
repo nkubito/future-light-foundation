@@ -1,403 +1,255 @@
- <!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Future Light Foundation | Empowerment</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=300;400;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-    <link rel="stylesheet" href="./style.css">
-  </head>
-  <body>
-    <nav>
-      <a href="#" class="logo" style="display: inline-flex; align-items: center; gap: 10px; text-decoration: none;">
-        <img src="./futurelogo.jpeg" alt="Future Light Foundation Logo" style="height: 50px; width: 50px; object-fit: contain; border-radius: 50%;" />
-        <span style="font-weight: 700; font-size: 1.2rem; color: inherit; font-family: 'Plus Jakarta Sans', sans-serif; white-space: nowrap;">FL-foundation</span>
-      </a>
-      <div class="mobile-toggle" id="menuBtn"><i class="fas fa-bars"></i></div>
-      <div class="nav-links" id="navLinks">
-        <div class="dropdown" style="position: relative; display: inline-block;">
-          <a href="#about" class="dropdown-toggle" style="display: flex; align-items: center; gap: 5px;">
-            About Us <i class="fas fa-chevron-down" style="font-size: 0.8rem;"></i>
-          </a>
-          <div class="dropdown-menu">
-            <a href="#story">Our Story (Origin)</a>
-            <a href="#team">Our Team</a>
-            <a href="#financials">Financials & Policies</a>
-          </div>
-        </div>
-        <a href="#programs">Programs</a>
-        <a href="#volunteer">Join Us</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#donate" class="btn btn-secondary" style="padding: 10px 24px">Donate Now</a>
-      </div>
-    </nav>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Future Light Organization</title>
+    <!-- Plus Jakarta Sans Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Chevron Icons and Payment Methods -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-    <header>
-      <img
-        src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=2070&auto=format&fit=crop"
-        class="hero-image"
-        alt="Children smiling"
-      />
-      <div class="hero-content">
-        <h1>Building a Brighter Future Together.</h1>
-        <p>
-          Empowering children across Africa through education, nutrition, and
-          holistic community support programs.
-        </p>
-        <a href="#donate" class="btn btn-primary">Support Our Cause</a>
-      </div>
-    </header>
+    <!-- Navigation -->
+    <nav>
+        <a href="#" class="logo">
+            <img src="https://via.placeholder.com/50" alt="Logo">
+        </a>
+        <div class="mobile-toggle" id="menuBtn">
+            <i class="fas fa-bars"></i>
+        </div>
+        <div class="nav-links" id="navLinks">
+            <a href="#">Home</a>
+            <a href="#about">Our Mission</a>
+            <div class="dropdown">
+                <a href="#get-involved">Get Involved <i class="fas fa-caret-down"></i></a>
+                <div class="dropdown-menu">
+                    <a href="#volunteer-section">Become a Volunteer</a>
+                    <a href="#donate-section">Make a Donation</a>
+                </div>
+            </div>
+            <a href="#team-section">Our Team</a>
+        </div>
+    </nav>
 
-    <section id="about">
-      <div class="mission-content">
-        <div>
-          <img
-            src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?q=80&w=1931&auto=format&fit=crop"
-            class="mission-img"
-            alt="Education"
-          />
-        </div>
-        <div>
-          <h2>Our Mission</h2>
-          <p class="sub-title">Nutrition and empowerment wrapped in hope.</p>
-          <p style="margin-top: 20px">
-            A meal is not guaranteed for many children. Your compassion can give
-            a nutritious meal wrapped in God’s love to a child who’s not sure
-            when they’ll eat next. We empower generations through access to
-            quality education, mentorship, and health support.
-          </p>
-          <div style="margin-top: 30px">
-            <a href="#volunteer" class="btn btn-primary">Volunteer With Us</a>
-          </div>
-        </div>
-      </div>
-    </section>
+    <!-- Hero Section -->
+    <header>
+        <img src="https://via.placeholder.com/1920x1080" alt="Hero Background" class="hero-image">
+        <div class="hero-content">
+            <h1>Empowering Communities for a Brighter Future</h1>
+            <p>Join us in bringing hope, education, and sustainable development to those who need it most.</p>
+            <a href="#donate-section" class="btn btn-primary">Donate Safely Now</a>
+        </div>
+    </header>
 
-    <section id="story" style="background: var(--off-white); padding: 60px 20px;">
-      <div style="max-width: 800px; margin: 0 auto; text-align: center;">
-        <span style="background: #ffe6d5; color: #ff6b00; padding: 6px 14px; border-radius: 20px; font-weight: 700; font-size: 0.85rem; text-transform: uppercase;">The Origin</span>
-        <h2 style="margin-top: 15px; font-weight: 800; font-size: 2.2rem; color: #1e293b;">The Heart Behind Future Light</h2>
-        <p style="font-size: 1.1rem; color: #475569; margin-top: 20px; line-height: 1.8; font-style: italic;">
-          "The foundation started as a personal oath. Our founder grew up as a young boy navigating this world without his mother, experiencing first-hand what it meant to walk without shelter, protection, and consistent warmth. Having persevered through those heavy realities, his ultimate dream was born: to create a home and built family structure where no other orphan or homeless youth has to feel abandoned."
-        </p>
-        <p style="font-size: 1.05rem; color: #64748b; margin-top: 15px; line-height: 1.7;">
-          Today, that dream is changing realities across Kigali, Rwanda. By bridging gaps in early nutrition and providing secure educational toolsets, we turn standard survival into brilliant childhood possibilities.
-        </p>
-      </div>
-    </section>
+    <!-- Mission Section -->
+    <section id="about">
+        <div class="mission-content">
+            <div>
+                <h2>Our Core Mission</h2>
+                <p class="sub-title">Building lasting foundations for tomorrow.</p>
+                <p style="margin-top: 15px;">Future Light works tirelessly around the globe to establish reliable structural pipelines, distribute education, and handle emergency resource provisioning securely and directly.</p>
+            </div>
+            <img src="https://via.placeholder.com/600x400" alt="Mission Image" class="mission-img">
+        </div>
+    </section>
 
-    <!-- ==========================================
-         UPDATED MEET OUR TEAM SECTION (DYNAMIC CARDS ONLY)
-         ========================================== -->
-    <section id="team" style="padding: 60px 20px;">
-      <div class="section-header" style="text-align: center; margin-bottom: 40px;">
-        <h2>Meet Our Team</h2>
-        <p class="sub-title">The local hearts running our daily outreach operations on the ground.</p>
-      </div>
-      <div class="grid-3" style="max-width: 1000px; margin: 0 auto;">
-         
-        <!-- Founder & Lead Card -->
-        <div class="card team-card" onclick="toggleTeamCard(this)" style="text-align: center; padding: 30px 20px; cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); overflow: hidden;">
-          <div style="width: 120px; height: 120px; border-radius: 50%; border: 3px solid #00bcff; padding: 2px; margin: 0 auto 15px auto; overflow: hidden; display: flex; align-items: center; justify-content: center;">
-            <img src="./tuyishime.jpeg" alt="Founder & Lead Photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;" />
-          </div>
-          <h3 style="margin-bottom: 5px;">TUYISHIME Emmanuel</h3>
-          <p style="color: #ff6b00; font-weight: 700; font-size: 0.9rem; margin-bottom: 10px;">Founder & Visionary Director</p>
-          
-          <!-- Hidden Details Container inside Card -->
-          <div class="team-details" style="max-height: 0; opacity: 0; overflow: hidden; transition: all 0.3s ease;">
-            <p style="font-size: 0.9rem; color: var(--gray); margin-top: 10px; line-height: 1.5;">Dedicated to reshaping paths for orphans and vulnerable kids across local communities by building a lasting family structure from personal experience.</p>
-            <div style="display: flex; justify-content: center; gap: 15px; margin-top: 15px; font-size: 1.1rem;">
-              <a href="mailto:foundationfuturelight@gmail.com" style="color: #64748b;"><i class="fas fa-envelope"></i></a>
-              <a href="https://instagram.com/futurelight_foundation" target="_blank" style="color: #64748b;"><i class="fab fa-instagram"></i></a>
-              <a href="https://wa.me/250790161576" target="_blank" style="color: #64748b;"><i class="fab fa-whatsapp"></i></a>
-            </div>
-          </div>
-          <div class="expand-indicator" style="margin-top: 15px; font-size: 0.8rem; color: #94a3b8; font-weight: 600;"><i class="fas fa-chevron-down"></i> Read Story</div>
-        </div>
+    <!-- 3-STEP DONATION WIZARD SECTION -->
+    <section id="donate-section">
+        <div class="section-header">
+            <h2>International Giving Portal</h2>
+            <p class="sub-title">Fast, secure, automated global support pipelines.</p>
+        </div>
 
-        <!-- Programs Team Card -->
-        <div class="card team-card" onclick="toggleTeamCard(this)" style="text-align: center; padding: 30px 20px; cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); overflow: hidden;">
-          <div style="width: 120px; height: 120px; border-radius: 50%; border: 3px solid #00bcff; padding: 2px; margin: 0 auto 15px auto; overflow: hidden; display: flex; align-items: center; justify-content: center;">
-            <img src="./tuyishime.jpeg" alt="Programs Team Photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&auto=format&fit=crop'"/>
-          </div>
-          <h3 style="margin-bottom: 5px;">Rugamba Nkubito</h3>
-          <p style="color: #ff6b00; font-weight: 700; font-size: 0.9rem; margin-bottom: 10px;">Dev & Programs Lead</p>
-          
-          <!-- Hidden Details Container inside Card -->
-          <div class="team-details" style="max-height: 0; opacity: 0; overflow: hidden; transition: all 0.3s ease;">
-            <p style="font-size: 0.9rem; color: var(--gray); margin-top: 10px; line-height: 1.5;">Directly monitoring community nutrition lines, managing backend logistics optimization, and arranging resource distribution systems.</p>
-            <div style="display: flex; justify-content: center; gap: 15px; margin-top: 15px; font-size: 1.1rem;">
-              <a href="mailto:foundationfuturelight@gmail.com" style="color: #64748b;"><i class="fas fa-envelope"></i></a>
-              <a href="#" style="color: #64748b;"><i class="fab fa-linkedin"></i></a>
-            </div>
-          </div>
-          <div class="expand-indicator" style="margin-top: 15px; font-size: 0.8rem; color: #94a3b8; font-weight: 600;"><i class="fas fa-chevron-down"></i> Read Story</div>
-        </div>
+        <div class="donation-box">
+            <form id="dynamic-payment-form">
+                
+                <!-- STEP 1: AMOUNT SELECTION -->
+                <div id="don-step-1" class="donation-step active-step" style="display: block;">
+                    <h3 style="margin-bottom: 15px;">1. Choose Donation Amount</h3>
+                    
+                    <div class="quick-amount-grid">
+                        <div class="amt-pill" onclick="selectQuickAmount(10)">$10</div>
+                        <div class="amt-pill" onclick="selectQuickAmount(25)">$25</div>
+                        <div class="amt-pill" onclick="selectQuickAmount(50)">$50</div>
+                        <div class="amt-pill" onclick="selectQuickAmount(100)">$100</div>
+                    </div>
 
-        <!-- Volunteers Card -->
-        <div class="card team-card" onclick="toggleTeamCard(this)" style="text-align: center; padding: 30px 20px; cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); overflow: hidden;">
-          <div style="width: 120px; height: 120px; border-radius: 50%; background: #e2e8f0; margin: 0 auto 15px auto; display: flex; align-items: center; justify-content: center; color: #64748b; font-size: 2.2rem;"><i class="fas fa-hands-helping"></i></div>
-          <h3 style="margin-bottom: 5px;">Community Volunteers</h3>
-          <p style="color: #ff6b00; font-weight: 700; font-size: 0.9rem; margin-bottom: 10px;">Educators & Mentors</p>
-          
-          <!-- Hidden Details Container inside Card -->
-          <div class="team-details" style="max-height: 0; opacity: 0; overflow: hidden; transition: all 0.3s ease;">
-            <p style="font-size: 0.9rem; color: var(--gray); margin-top: 10px; line-height: 1.5;">Local youth mentors offering regular weekend tutoring, foundational school logistics assistance, and care line outreach support.</p>
-            <div style="display: flex; justify-content: center; gap: 15px; margin-top: 15px; font-size: 1.1rem;">
-              <a href="#volunteer" style="color: var(--secondary); font-weight: 700; font-size: 0.85rem; text-decoration: none;">Join This Group <i class="fas fa-arrow-right" style="margin-left:4px;"></i></a>
-            </div>
-          </div>
-          <div class="expand-indicator" style="margin-top: 15px; font-size: 0.8rem; color: #94a3b8; font-weight: 600;"><i class="fas fa-chevron-down"></i> View Details</div>
-        </div>
+                    <div class="input-group-custom">
+                        <span class="currency-label">$</span>
+                        <input type="number" id="global-amount" placeholder="Enter custom amount" min="1">
+                    </div>
 
-      </div>
-    </section>
-    
-    <section id="financials" style="background: var(--off-white); padding: 60px 20px;">
-      <div style="max-width: 700px; margin: 0 auto; background: white; padding: 35px; border-radius: 12px; border: 1px solid var(--border);">
-        <h2 style="font-size: 1.8rem; color: #1e293b; margin-bottom: 10px; font-weight: 800; text-align: center;">Transparency & Financial Policies</h2>
-        <p style="color: #64748b; text-align: center; font-size: 0.95rem; margin-bottom: 25px;">We treat your donations with maximum stewardship and complete professional accountability.</p>
-        <div style="display: flex; flex-direction: column; gap: 15px;">
-          <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #f1f5f9; padding-bottom: 10px;">
-            <span style="font-weight: 600; color: #334155;"><i class="fas fa-utensils" style="color: #ff6b00; margin-right: 10px;"></i> Direct Nutrition & Food Supplies</span>
-            <span style="font-weight: 700; color: #1e293b;">70% Allocation</span>
-          </div>
-          <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #f1f5f9; padding-bottom: 10px;">
-            <span style="font-weight: 600; color: #334155;"><i class="fas fa-book-open" style="color: #ff6b00; margin-right: 10px;"></i> Tuition Materials & Scholarships</span>
-            <span style="font-weight: 700; color: #1e293b;">20% Allocation</span>
-          </div>
-          <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 5px;">
-            <span style="font-weight: 600; color: #334155;"><i class="fas fa-chart-line" style="color: #ff6b00; margin-right: 10px;"></i> Local Field Logistics & Compliance</span>
-            <span style="font-weight: 700; color: #1e293b;">10% Allocation</span>
-          </div>
-        </div>
-        <p style="margin-top: 25px; font-size: 0.85rem; color: var(--gray); text-align: center; line-height: 1.5; background: #fafafa; padding: 12px; border-radius: 6px;">
-          All local transactions handled securely through verified MTN/Airtel gateways and regional banking oversight partners. Financial reports are archived annually for public examination.
-        </p>
-      </div>
-    </section>
+                    <button type="button" class="btn btn-primary" style="width: 100%;" onclick="toStep2()">Continue to Payment Method</button>
+                </div>
 
-    <section id="programs">
-      <div class="section-header">
-        <h2>Our Core Pillars</h2>
-        <p class="sub-title">
-          We focus on long-term sustainability and immediate relief.
-        </p>
-      </div>
-      <div class="grid-3">
-        <div class="card">
-          <i class="fas fa-graduation-cap"></i>
-          <h3>Education</h3>
-          <p>
-            Providing scholarships, tutoring, and stable learning environments
-            to nurture future leaders.
-          </p>
-        </div>
-        <div class="card">
-          <i class="fas fa-heartbeat"></i>
-          <h3>Nutrition</h3>
-          <p>
-            Daily school meals ensuring children have the energy to focus and
-            grow physically strong.
-          </p>
-        </div>
-        <div class="card">
-          <i class="fas fa-pencil-ruler"></i>
-          <h3>School Supplies</h3>
-          <p>
-            Distributing essential materials like backpacks and tech tools to
-            bridge the digital divide.
-          </p>
-        </div>
-      </div>
-    </section>
+                <!-- STEP 2: METHOD TRACKING SELECTOR -->
+                <div id="don-step-2" class="donation-step">
+                    <h3 style="margin-bottom: 15px;">2. Select Payment Route</h3>
+                    
+                    <div class="method-selection-grid">
+                        <div class="method-card" onclick="toStep3('momo')">
+                            <i class="fas fa-mobile-alt"></i>
+                            <span>Mobile Money</span>
+                        </div>
+                        <div class="method-card" onclick="toStep3('card')">
+                            <i class="fas fa-credit-card"></i>
+                            <span>Credit Card</span>
+                        </div>
+                        <div class="method-card" onclick="toStep3('bank')">
+                            <i class="fas fa-university"></i>
+                            <span>Bank Wire</span>
+                        </div>
+                    </div>
 
-    <!-- ==========================================
-         INTERNATIONAL 3-STEP PURE PROGRESSIVE DONATION
-         ========================================== -->
-    <section id="donate" style="background: var(--off-white); padding: 100px 10%; font-family: 'Plus Jakarta Sans', sans-serif;">
-      <div class="section-header" style="text-align: center; margin-bottom: 40px;">
-        <h2>Make an Impact with Us</h2>
-        <p class="sub-title">Your generosity directly funds nutrition, education, and community development programs.</p>
-      </div>
-       
-      <div style="max-width: 500px; margin: 0 auto; background: white; padding: 35px; border: 1px solid var(--border); border-radius: 12px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); min-height: 320px; display: flex; flex-direction: column; justify-content: space-between;">
-         
-        <!-- STEP 1: ENTER AMOUNT -->
-        <div id="don-step-1">
-          <label style="font-weight: 700; font-size: 1.1rem; color: #1e293b; display: block; margin-bottom: 20px; text-align: center;">Enter Donation Amount (USD $)</label>
-          <div style="position: relative; max-width: 280px; margin: 0 auto 30px;">
-            <span style="position: absolute; left: 20px; top: 50%; transform: translateY(-50%); font-size: 1.6rem; font-weight: 700; color: #64748b;">$</span>
-            <input type="number" id="global-amount" placeholder="100" min="1" style="width: 100%; padding: 15px 15px 15px 45px; font-size: 1.6rem; font-weight: 700; border: 2px solid #cbd5e1; border-radius: 8px; margin-bottom: 0;" />
-          </div>
-          <button type="button" class="btn btn-secondary" onclick="toStep2()" style="width: 100%; padding: 16px; font-weight: 700; border-radius: 6px;">Next: Choose Method</button>
-        </div>
+                    <button type="button" class="btn btn-secondary" style="width: 100%;" onclick="toStep1()">Back to Amount</button>
+                </div>
 
-        <!-- STEP 2: SELECT METHOD ONLY -->
-        <div id="don-step-2" style="display: none;">
-          <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 25px; cursor: pointer;" onclick="toStep1()">
-            <i class="fas fa-arrow-left" style="color: var(--gray); font-size: 0.9rem;"></i> <span style="font-size: 0.9rem; color: var(--gray); font-weight: 600;">Change amount</span>
-          </div>
-          <p style="font-weight: 700; font-size: 1.1rem; color: #1e293b; margin-bottom: 20px; text-align: center;">Choose how you want to pay</p>
-           
-          <div style="display: flex; flex-direction: column; gap: 12px;">
-            <!-- MoMo Button -->
-            <div onclick="toStep3('momo')" style="display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; border: 2px solid #e2e8f0; border-radius: 8px; cursor: pointer; transition: 0.2s; background: #fafafa;" onmouseover="this.style.borderColor='var(--secondary)'" onmouseout="this.style.borderColor='#e2e8f0'">
-              <span style="font-weight: 700; color: #1e293b;"><i class="fas fa-mobile-alt" style="margin-right: 12px; color: var(--secondary);"></i> Mobile Money</span>
-              <img src="./momo.jpg" alt="MoMo" style="height: 22px;" />
-            </div>
-            <!-- Card Button -->
-            <div onclick="toStep3('card')" style="display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; border: 2px solid #e2e8f0; border-radius: 8px; cursor: pointer; transition: 0.2s; background: #fafafa;" onmouseover="this.style.borderColor='var(--secondary)'" onmouseout="this.style.borderColor='#e2e8f0'">
-              <span style="font-weight: 700; color: #1e293b;"><i class="far fa-credit-card" style="margin-right: 12px; color: var(--secondary);"></i> Credit / Debit Card</span>
-              <img src="./imagevisa.jpg" alt="Visa" style="height: 22px;" />
-            </div>
-            <!-- Bank Button -->
-            <div onclick="toStep3('bank')" style="display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; border: 2px solid #e2e8f0; border-radius: 8px; cursor: pointer; transition: 0.2s; background: #fafafa;" onmouseover="this.style.borderColor='var(--secondary)'" onmouseout="this.style.borderColor='#e2e8f0'">
-              <span style="font-weight: 700; color: #1e293b;"><i class="fas fa-university" style="margin-right: 12px; color: var(--secondary);"></i> Bank Wire Transfer</span>
-              <i class="fas fa-chevron-right" style="color: #cbd5e1;"></i>
-            </div>
-          </div>
-        </div>
+                <!-- STEP 3: TRANSACTION PAYLOAD GATEWAYS -->
+                <div id="don-step-3" class="donation-step">
+                    <h3 style="margin-bottom: 15px;">3. Fill Personal Parameter Details</h3>
+                    
+                    <!-- Branch A: Mobile Money Info -->
+                    <div id="fields-momo" style="display: none;">
+                        <div class="form-row-split">
+                            <input type="text" id="momo-first" placeholder="First Name">
+                            <input type="text" id="momo-last" placeholder="Last Name">
+                        </div>
+                        <input type="email" id="momo-email" placeholder="Email Address">
+                        <div class="form-row-split">
+                            <select id="momo-country">
+                                <option value="+250">Rwanda (+250)</option>
+                                <option value="+256">Uganda (+256)</option>
+                                <option value="+1">USA (+1)</option>
+                            </select>
+                            <input type="text" id="momo-phone" placeholder="Phone Number">
+                        </div>
+                    </div>
 
-        <!-- STEP 3: DEDICATED INFORMATION FIELDS -->
-        <div id="don-step-3" style="display: none;">
-          <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 25px; cursor: pointer;" onclick="backToStep2()">
-            <i class="fas fa-arrow-left" style="color: var(--gray); font-size: 0.9rem;"></i> <span style="font-size: 0.9rem; color: var(--gray); font-weight: 600;">Change method</span>
-          </div>
+                    <!-- Branch B: Card Info -->
+                    <div id="fields-card" style="display: none;">
+                        <div class="form-row-split">
+                            <input type="text" id="card-first" placeholder="First Name">
+                            <input type="text" id="card-last" placeholder="Last Name">
+                        </div>
+                        <input type="email" id="card-email" placeholder="Email Address">
+                        <input type="text" id="card-number" placeholder="Card Number">
+                        <div class="form-row-split">
+                            <input type="text" id="card-expiry" placeholder="MM/YY">
+                            <input type="text" id="card-cvc" placeholder="CVC">
+                        </div>
+                    </div>
 
-          <!-- Target Dynamic Form Content Holder -->
-          <form id="dynamic-payment-form">
-            <!-- MoMo Fields Wrapper -->
-            <div id="fields-momo" style="display: none;">
-              <h4 style="margin-bottom: 15px; color: #1e293b;">Mobile Money Details</h4>
-              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px;">
-                <input type="text" id="momo-first" placeholder="First Name*" required style="padding: 12px; border: 1px solid #cbd5e1; border-radius: 6px; margin:0;" />
-                <input type="text" id="momo-last" placeholder="Last Name*" required style="padding: 12px; border: 1px solid #cbd5e1; border-radius: 6px; margin:0;" />
-              </div>
-              <input type="email" id="momo-email" placeholder="Email Address*" required style="padding: 12px; border: 1px solid #cbd5e1; border-radius: 6px; margin-bottom: 12px;" />
-              <div style="display: flex; gap: 6px; margin-bottom: 20px;">
-                <select id="momo-country" style="padding: 12px; border: 1px solid #cbd5e1; border-radius: 6px; background: #fff; width: 95px;">
-                  <option>🇷🇼 +250</option>
-                  <option>🇰🇪 +254</option>
-                  <option>🇺🇬 +256</option>
-                </select>
-                <input type="text" id="momo-phone" placeholder="Phone Number*" required style="flex: 1; padding: 12px; border: 1px solid #cbd5e1; border-radius: 6px; margin:0;" />
-              </div>
-              <button type="submit" class="btn btn-secondary" style="width: 100%; padding: 14px; font-weight: 700; border-radius: 6px;">Submit MoMo Donation</button>
-            </div>
+                    <!-- Branch C: Direct Bank Wire Info -->
+                    <div id="fields-bank" style="display: none;">
+                        <input type="text" id="bank-name" placeholder="Full Legal/Company Name">
+                        <input type="email" id="bank-email" placeholder="Email Address">
+                        <p style="font-size: 0.85rem; color: var(--gray); margin-bottom: 15px;">Note: Wire transfer requests instantly process automated setup emails detailing banking routing targets.</p>
+                    </div>
 
-            <!-- Card Fields Wrapper -->
-            <div id="fields-card" style="display: none;">
-              <h4 style="margin-bottom: 15px; color: #1e293b;">Secure Card Checkout</h4>
-              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px;">
-                <input type="text" id="card-first" placeholder="First Name*" required style="padding: 12px; border: 1px solid #cbd5e1; border-radius: 6px; margin:0;" />
-                <input type="text" id="card-last" placeholder="Last Name*" required style="padding: 12px; border: 1px solid #cbd5e1; border-radius: 6px; margin:0;" />
-              </div>
-              <input type="email" id="card-email" placeholder="Email Address*" required style="padding: 12px; border: 1px solid #cbd5e1; border-radius: 6px; margin-bottom: 12px;" />
-              <input type="text" id="card-number" placeholder="Card Number*" required style="padding: 12px; border: 1px solid #cbd5e1; border-radius: 6px; margin-bottom: 12px;" />
-              <div style="display: flex; gap: 10px; margin-bottom: 20px;">
-                <input type="text" id="card-expiry" placeholder="MM / YY*" required style="width: 50%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 6px; margin:0;" />
-                <input type="text" id="card-cvc" placeholder="CVC*" required style="width: 50%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 6px; margin:0;" />
-              </div>
-              <button type="submit" class="btn btn-secondary" style="width: 100%; padding: 14px; font-weight: 700; border-radius: 6px;">Authorize Payment</button>
-            </div>
+                    <div class="wizard-nav-buttons">
+                        <button type="button" class="btn btn-secondary" onclick="backToStep2()">Back</button>
+                        <button type="submit" class="btn btn-primary">Complete Donation</button>
+                    </div>
+                </div>
 
-            <!-- Bank Fields Wrapper -->
-            <div id="fields-bank" style="display: none;">
-              <h4 style="margin-bottom: 10px; color: #1e293b;">Bank Wire Request</h4>
-              <p style="font-size: 0.85rem; color: var(--gray); margin-bottom: 15px; line-height: 1.4;">Enter your details to generate local regional Swift settlement information directly to your email.</p>
-              <input type="text" id="bank-name" placeholder="Full Name / Organization Name*" required style="padding: 12px; border: 1px solid #cbd5e1; border-radius: 6px; margin-bottom: 12px;" />
-              <input type="email" id="bank-email" placeholder="Email Address*" required style="padding: 12px; border: 1px solid #cbd5e1; border-radius: 6px; margin-bottom: 20px;" />
-              <button type="submit" class="btn btn-secondary" style="width: 100%; padding: 14px; font-weight: 700; border-radius: 6px;">Email Me Swift Instructions</button>
-            </div>
-          </form>
-        </div>
+            </form>
+        </div>
+    </section>
 
-        <!-- Dynamic Trust Badge Channel Footer Row -->
-        <div id="donation-footer-logos" style="margin-top: 25px; border-top: 1px solid #f1f5f9; padding-top: 15px; display: flex; justify-content: center; align-items: center; gap: 15px; flex-wrap: wrap;">
-          <img src="./momo.jpg" alt="MoMo" style="height: 18px; object-fit: contain;" />
-          <img src="./imagevisa.jpg" alt="Visa" style="height: 18px; object-fit: contain;" />
-          <img src="./banks.jpg" alt="Wire" style="height: 18px; object-fit: contain;" />
-        </div>
+    <!-- TEAM INFORMATION EXPANSION ACCORDION SYSTEM -->
+    <section id="team-section" style="background: var(--off-white);">
+        <div class="section-header">
+            <h2>Our Dedicated Leadership Team</h2>
+            <p class="sub-title">Click any executive card to expand full background information smoothly.</p>
+        </div>
 
-      </div>
-    </section>
-   
-    <section id="volunteer">
-      <div class="section-header">
-        <h2>Get Involved</h2>
-        <p>Help us change the narrative for the next generation.</p>
-      </div>
-      <div class="form-container">
-        <div>
-          <h3>Join the Movement</h3>
-          <p style="margin-top: 10px; color: var(--gray)">
-            Fill out the form to express interest in volunteering. We will
-            contact you within 48 hours.
-          </p>
-        </div>
-        <form id="volunteerForm">
-          <input type="text" id="volunteerName" placeholder="Full Name" required />
-          <input type="email" id="volunteerEmail" placeholder="Email Address" required />
-          <textarea id="volunteerSkills" rows="4" placeholder="Briefly describe your skills..."></textarea>
-          <button type="submit" class="btn btn-primary" style="width: 100%">
-            Submit Interest
-          </button>
-        </form>
-      </div>
-    </section>
+        <div class="team-grid">
+            
+            <!-- Executive Card 1 -->
+            <div class="team-card" onclick="toggleTeamCard(this)">
+                <div class="team-hero-frame">
+                    <img src="https://via.placeholder.com/300x400" alt="Executive Director">
+                </div>
+                <div class="team-meta-summary">
+                    <div>
+                        <h3>Sarah Jenkins</h3>
+                        <p>Executive Director</p>
+                    </div>
+                    <div class="expand-indicator">
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+                <div class="team-details">
+                    <p>Sarah has over 12 years of structural development experience managing complex operations and field-level relief deployment pipelines across global centers.</p>
+                    <div class="team-socials">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
 
-    <section id="gallery">
-      <div class="section-header">
-        <h2>Community Gallery</h2>
-        <p>Seeing is believing. Take a look at our recent work.</p>
-      </div>
-      <div class="gallery-grid">
-        <img src="https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?q=80&w=2038&auto=format&fit=crop" alt="Hopeful African child portrait" />
-        <img src="https://images.unsplash.com/photo-1489641493513-ba4ee84ccea9?q=80&w=2070&auto=format&fit=crop" alt="Vulnerable community children holding hands" />
-        <img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?q=80&w=2070&auto=format&fit=crop" alt="Smiling young boy in Africa" />
-        <img src="https://images.unsplash.com/photo-1547082299-de196ea013d6?q=80&w=2070&auto=format&fit=crop" alt="Group of kids playing together" />
-        
-        <img src="https://images.unsplash.com/photo-1484712401471-05c7215e66eb?q=80&w=2070&auto=format&fit=crop" alt="Joyful African children laughing" />
-        <img src="https://images.unsplash.com/photo-1527525443983-6e60c75ffe31?q=80&w=1974&auto=format&fit=crop" alt="Close-up of young hopeful child" />
-        <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?q=80&w=1972&auto=format&fit=crop" alt="Supportive community student group" />
-        <img src="https://images.unsplash.com/photo-1519834785169-98be25ec3f84?q=80&w=2070&auto=format&fit=crop" alt="Joyful youth in a vulnerable community" />
-      </div>
-    </section>
+            <!-- Executive Card 2 -->
+            <div class="team-card" onclick="toggleTeamCard(this)">
+                <div class="team-hero-frame">
+                    <img src="https://via.placeholder.com/300x400" alt="Operations Manager">
+                </div>
+                <div class="team-meta-summary">
+                    <div>
+                        <h3>David Kweli</h3>
+                        <p>Head of Field Operations</p>
+                    </div>
+                    <div class="expand-indicator">
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+                <div class="team-details">
+                    <p>David manages direct regional resource distribution networks, ensuring high efficiency metrics and strict backend security adherence for programmatic safety operations.</p>
+                    <div class="team-socials">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
 
-    <footer>
-      <div class="footer-grid">
-        <div>
-          <a href="#" class="logo" style="color: white">Future Light</a>
-          <p style="margin-top: 15px; color: #cbd5e1">
-            A registered NGO dedicated to empowering children through sustainable development.
-          </p>
-        </div>
-        <div>
-          <h4>Contact</h4>
-          <p style="color: #cbd5e1; margin-top: 15px">Kigali, Rwanda</p>
-          <p style="color: #cbd5e1">foundationfuturelight@gmail.com</p>
-        </div>
-        <div>
-          <h4>Follow Our Progress</h4>
-          <div class="social-links">
-            <a href="https://wa.me/250790161576"><i class="fab fa-whatsapp"></i></a>
-            <a href="https://instagram.com/futurelight_foundation"><i class="fab fa-instagram"></i></a>
-          </div>
-        </div>
-      </div>
-      <div style="border-top: 1px solid #334155; padding-top: 30px; text-align: center; color: #94a3b8; font-size: 0.85rem;">
-        &copy; 2026 Future Light Foundation | N.K.U.B.I.T.O | All Rights Reserved.
-      </div>
-    </footer>
-    <script src="./main.js"></script>
-  </body>
+        </div>
+    </section>
+
+    <!-- VOLUNTEER CAPTURE COMPONENT -->
+    <section id="volunteer-section">
+        <div class="section-header">
+            <h2>Become a Volunteer</h2>
+            <p class="sub-title">Lend your specialized skills to active ongoing deployments.</p>
+        </div>
+        <div class="form-container">
+            <div style="display: flex; flex-direction: column; justify-content: center;">
+                <h3>Join the Collective Impact</h3>
+                <p style="margin-top: 10px; color: var(--gray);">Our automated system instantly checks incoming profiles against regional resource requirements and pushes direct matching follow-up notifications.</p>
+            </div>
+            <form id="volunteerForm">
+                <input type="text" id="volunteerName" placeholder="Your Full Name" required>
+                <input type="email" id="volunteerEmail" placeholder="Your Email Address" required>
+                <textarea id="volunteerSkills" rows="4" placeholder="Describe your background skills (e.g., Development, Logistics, Medical Care)" required></textarea>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Registration</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer Component -->
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <h4>Future Light</h4>
+                <p style="color: var(--gray); font-size: 0.9rem; margin-top: 10px;">Enlightening paths, changing generations securely.</p>
+            </div>
+        </div>
+        <div style="text-align: center; border-top: 1px solid #2d3748; padding-top: 20px; font-size: 0.85rem; color: var(--gray);">
+            &copy; 2026 Future Light NGO System. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- Connect your updated main.js -->
+    <script src="main.js"></script>
+</body>
 </html>
