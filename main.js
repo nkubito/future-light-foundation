@@ -56,6 +56,16 @@ function backToStep2() {
     document.getElementById('don-step-2').style.display = 'block';
 }
 
+// --- Quick Selector Autofill Assistant ---
+function selectQuickAmount(val) {
+    const amountInput = document.getElementById('global-amount');
+    if (amountInput) {
+        amountInput.value = val;
+        // Instantly transition forward to choose the payment method
+        toStep2();
+    }
+}
+
 // --- Team Card Toggle Feature ---
 function toggleTeamCard(cardElement) {
     const details = cardElement.querySelector('.team-details');
@@ -94,6 +104,7 @@ window.toStep2 = toStep2;
 window.toStep1 = toStep1;
 window.toStep3 = toStep3;
 window.backToStep2 = backToStep2;
+window.selectQuickAmount = selectQuickAmount;
 window.toggleTeamCard = toggleTeamCard;
 
 // ==========================================
