@@ -19,7 +19,7 @@ if (menuBtn && navLinks) {
 // ==========================================
 // 2. INTERNATIONAL 3-STEP DONATION NAVIGATION
 // ==========================================
-let selectedMethodTracker = ''; 
+let selectedMethodTracker = ''; // Tracks chosen method ('momo', 'card', 'bank')
 
 function toStep2() {
     const amount = document.getElementById('global-amount').value;
@@ -42,10 +42,12 @@ function toStep3(method) {
     document.getElementById('don-step-2').style.display = 'none';
     document.getElementById('don-step-3').style.display = 'block';
 
+    // Hide all input parameter blocks initially
     document.getElementById('fields-momo').style.display = 'none';
     document.getElementById('fields-card').style.display = 'none';
     document.getElementById('fields-bank').style.display = 'none';
 
+    // Dynamically reveal only the chosen fields screen
     document.getElementById(`fields-${method}`).style.display = 'block';
 }
 
@@ -54,19 +56,15 @@ function backToStep2() {
     document.getElementById('don-step-2').style.display = 'block';
 }
 
-function selectQuickAmount(val) {
-    const amountInput = document.getElementById('global-amount');
-    if (amountInput) {
-        amountInput.value = val;
-        toStep2();
-    }
-}
-
+// --- Team Card Toggle Feature ---
 function toggleTeamCard(cardElement) {
     const details = cardElement.querySelector('.team-details');
     const indicator = cardElement.querySelector('.expand-indicator i');
+    
+    // Check if this card is already expanded
     const isExpanded = cardElement.classList.contains('expanded');
     
+    // Collapse any open team cards first
     document.querySelectorAll('.team-card').forEach(card => {
         card.classList.remove('expanded');
         const cardDetails = card.querySelector('.team-details');
@@ -80,6 +78,7 @@ function toggleTeamCard(cardElement) {
         }
     });
 
+    // If it wasn't expanded, open it cleanly
     if (!isExpanded && details) {
         cardElement.classList.add('expanded');
         details.style.maxHeight = details.scrollHeight + 'px';
@@ -90,16 +89,18 @@ function toggleTeamCard(cardElement) {
     }
 }
 
+// Make functions globally available for inline HTML onclick attributes
 window.toStep2 = toStep2;
 window.toStep1 = toStep1;
 window.toStep3 = toStep3;
 window.backToStep2 = backToStep2;
-window.selectQuickAmount = selectQuickAmount;
 window.toggleTeamCard = toggleTeamCard;
 
 // ==========================================
 // 3. BACKEND CONNECTIONS & SUBMISSIONS
 // ==========================================
+
+// --- Handle Volunteer Form Submission ---
 const volunteerForm = document.getElementById('volunteerForm');
 
 if (volunteerForm) {
@@ -132,6 +133,7 @@ if (volunteerForm) {
     });
 }
 
+// --- Handle Dynamic 3-Step Donation Submission ---
 document.addEventListener('DOMContentLoaded', () => {
     const dynamicPayForm = document.getElementById('dynamic-payment-form');
     
@@ -145,6 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 amount: parseFloat(amount) || 0 
             };
 
+            // Read variables directly based on the active chosen branch
             if (selectedMethodTracker === 'momo') {
                 payload.firstName = document.getElementById('momo-first').value;
                 payload.lastName = document.getElementById('momo-last').value;
@@ -164,9 +167,10 @@ document.addEventListener('DOMContentLoaded', () => {
             else if (selectedMethodTracker === 'bank') {
                 payload.fullName = document.getElementById('bank-name').value;
                 payload.email = document.getElementById('bank-email').value;
-                payload.amount = 0; 
+                payload.amount = 0; // Wire transfers utilize direct instruction emails
             }
 
+            // Fallback validation checks before pushing upstream
             if (selectedMethodTracker !== 'bank' && (!payload.amount || payload.amount <= 0)) {
                 alert("Please select a valid amount first.");
                 return;
@@ -188,6 +192,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert(data.message || "Thank you! Transaction processed.");
                 
                 if (response.ok) {
+                    // Reset everything cleanly and slide back to Step 1
                     dynamicPayForm.reset();
                     document.getElementById('global-amount').value = '';
                     toStep1();
