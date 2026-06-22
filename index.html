@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Future Light Foundation | Empowerment</title>
     <link
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=300;400;600;700;800&display=swap"
       rel="stylesheet"
     />
     <link
@@ -16,9 +16,11 @@
   </head>
   <body>
     <nav>
-  <a href="#" class="logo">
-    <img src="./futurelogo.jpeg" alt="Future Light Foundation Logo" style="height: 60px; width: auto; object-fit: contain; border-radius: 50%; vertical-align: middle;" />
-  </a>
+      <!-- Logo and FL-foundation Text Container -->
+      <a href="#" class="logo" style="display: inline-flex; align-items: center; gap: 10px; text-decoration: none;">
+        <img src="./futurelogo.jpeg" alt="Future Light Foundation Logo" style="height: 50px; width: 50px; object-fit: contain; border-radius: 50%;" />
+        <span style="font-weight: 700; font-size: 1.2rem; color: inherit; font-family: 'Plus Jakarta Sans', sans-serif; white-space: nowrap;">FL-foundation</span>
+      </a>
       <div class="mobile-toggle" id="menuBtn"><i class="fas fa-bars"></i></div>
       <div class="nav-links" id="navLinks">
         <a href="#about">Our Mission</a>
@@ -135,6 +137,18 @@
         <button id="donateBtn" class="btn btn-secondary" style="width: 100%">
           Proceed to Donate
         </button>
+
+        <!-- Responsive Payment Gateways Logos Container -->
+        <div style="margin-top: 25px; border-top: 1px solid #f1f5f9; padding-top: 15px;">
+          <p style="font-size: 0.8rem; color: #64748b; font-weight: 600; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px;">
+            Accepted Donation Channels
+          </p>
+          <div style="display: flex; justify-content: center; align-items: center; gap: 15px; flex-wrap: wrap;">
+            <img src="./momo.jpg" alt="Mobile Money" style="height: 32px; max-width: 70px; object-fit: contain; filter: grayscale(10%);" />
+            <img src="./imagevisa.jpg" alt="Visa Card" style="height: 32px; max-width: 70px; object-fit: contain; filter: grayscale(10%);" />
+            <img src="./banks.jpj" alt="Bank Transfer" style="height: 32px; max-width: 70px; object-fit: contain; filter: grayscale(10%);" />
+          </div>
+        </div>
           
         <p style="margin-top: 15px; font-size: 0.85rem; color: var(--gray)">
           Securely processed via Mobile Money or Wire Transfer.
