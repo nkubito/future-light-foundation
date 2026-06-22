@@ -56,11 +56,45 @@ function backToStep2() {
     document.getElementById('don-step-2').style.display = 'block';
 }
 
+// --- Team Card Toggle Feature ---
+function toggleTeamCard(cardElement) {
+    const details = cardElement.querySelector('.team-details');
+    const indicator = cardElement.querySelector('.expand-indicator i');
+    
+    // Check if this card is already expanded
+    const isExpanded = cardElement.classList.contains('expanded');
+    
+    // Collapse any open team cards first
+    document.querySelectorAll('.team-card').forEach(card => {
+        card.classList.remove('expanded');
+        const cardDetails = card.querySelector('.team-details');
+        const cardIndicator = card.querySelector('.expand-indicator i');
+        if (cardDetails) {
+            cardDetails.style.maxHeight = '0';
+            cardDetails.style.opacity = '0';
+        }
+        if (cardIndicator) {
+            cardIndicator.className = 'fas fa-chevron-down';
+        }
+    });
+
+    // If it wasn't expanded, open it cleanly
+    if (!isExpanded && details) {
+        cardElement.classList.add('expanded');
+        details.style.maxHeight = details.scrollHeight + 'px';
+        details.style.opacity = '1';
+        if (indicator) {
+            indicator.className = 'fas fa-chevron-up';
+        }
+    }
+}
+
 // Make functions globally available for inline HTML onclick attributes
 window.toStep2 = toStep2;
 window.toStep1 = toStep1;
 window.toStep3 = toStep3;
 window.backToStep2 = backToStep2;
+window.toggleTeamCard = toggleTeamCard;
 
 // ==========================================
 // 3. BACKEND CONNECTIONS & SUBMISSIONS
