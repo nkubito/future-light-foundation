@@ -216,106 +216,68 @@
         <h2>Make an Impact with Us</h2>
         <p class="sub-title">Your generosity directly funds nutrition, education, and community development programs.</p>
       </div>
-       
-      <div style="max-width: 500px; margin: 0 auto; background: white; padding: 35px; border: 1px solid var(--border); border-radius: 12px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); min-height: 320px; display: flex; flex-direction: column; justify-content: space-between;">
-         
-        <div id="don-step-1">
-          <label style="font-weight: 700; font-size: 1.1rem; color: #1e293b; display: block; margin-bottom: 15px; text-align: center;">Choose or Enter Donation Amount (USD $)</label>
-          
-          <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 20px;">
-            <button type="button" class="amt-pill" onclick="selectQuickAmount(25)">$25</button>
-            <button type="button" class="amt-pill" onclick="selectQuickAmount(50)">$50</button>
-            <button type="button" class="amt-pill" onclick="selectQuickAmount(100)">$100</button>
-            <button type="button" class="amt-pill" onclick="selectQuickAmount(250)">$250</button>
-          </div>
 
-          <div style="position: relative; max-width: 280px; margin: 0 auto 30px;">
-            <span style="position: absolute; left: 20px; top: 50%; transform: translateY(-50%); font-size: 1.6rem; font-weight: 700; color: #64748b;">$</span>
-            <input type="number" id="global-amount" placeholder="100" min="1" style="width: 100%; padding: 15px 15px 15px 45px; font-size: 1.6rem; font-weight: 700; border: 2px solid #cbd5e1; border-radius: 8px; margin-bottom: 0;" />
+      <div style="max-width: 500px; margin: 0 auto; background: white; padding: 35px; border: 1px solid var(--border); border-radius: 12px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); min-height: 320px; display: flex; flex-direction: column; justify-content: space-between;">
+        <div id="don-step-1">
+          <label for="global-amount" style="font-weight: 700; font-size: 1.1rem; color: #1e293b; display: block; margin-bottom: 15px; text-align: center;">Choose or Enter Donation Amount (Rwandan francs — RWF)</label>
+          <div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 20px;">
+            <button type="button" class="amt-pill" onclick="selectQuickAmount(5000)">RWF 5,000</button>
+            <button type="button" class="amt-pill" onclick="selectQuickAmount(10000)">RWF 10,000</button>
+            <button type="button" class="amt-pill" onclick="selectQuickAmount(20000)">RWF 20,000</button>
+            <button type="button" class="amt-pill" onclick="selectQuickAmount(50000)">RWF 50,000</button>
           </div>
-          <button type="button" class="btn btn-secondary" onclick="toStep2()" style="width: 100%; padding: 16px; font-weight: 700; border-radius: 6px;">Next: Choose Method</button>
+          <div style="position: relative; max-width: 320px; margin: 0 auto 25px;">
+            <span style="position: absolute; left: 14px; top: 50%; transform: translateY(-50%); font-size: 1rem; font-weight: 700; color: #64748b;">RWF</span>
+            <input type="number" id="global-amount" placeholder="10000" min="1" step="1" style="width: 100%; padding: 15px 15px 15px 65px; font-size: 1.35rem; font-weight: 700; border: 2px solid #cbd5e1; border-radius: 8px; margin-bottom: 0;" />
+          </div>
+          <button type="button" class="btn btn-secondary" onclick="toStep2()" style="width: 100%; padding: 16px; font-weight: 700; border-radius: 6px;">Next: Mobile Money</button>
         </div>
 
         <div id="don-step-2" style="display: none;">
           <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 25px; cursor: pointer;" onclick="toStep1()">
-            <i class="fas fa-arrow-left" style="color: var(--gray); font-size: 0.9rem;"></i> <span style="font-size: 0.9rem; color: var(--gray); font-weight: 600;">Change amount</span>
+            <i class="fas fa-arrow-left" style="color: var(--gray); font-size: 0.9rem;"></i>
+            <span style="font-size: 0.9rem; color: var(--gray); font-weight: 600;">Change amount</span>
           </div>
-          <p style="font-weight: 700; font-size: 1.1rem; color: #1e293b; margin-bottom: 20px; text-align: center;">Choose how you want to pay</p>
-           
-          <div style="display: flex; flex-direction: column; gap: 12px;">
-            <div onclick="toStep3('momo')" style="display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; border: 2px solid #e2e8f0; border-radius: 8px; cursor: pointer; transition: 0.2s; background: #fafafa;" onmouseover="this.style.borderColor='var(--secondary)'" onmouseout="this.style.borderColor='#e2e8f0'">
-              <span style="font-weight: 700; color: #1e293b;"><i class="fas fa-mobile-alt" style="margin-right: 12px; color: var(--secondary);"></i> Mobile Money</span>
-              <img src="./momo.jpg" alt="MoMo" style="height: 22px;" />
-            </div>
-            <div onclick="toStep3('card')" style="display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; border: 2px solid #e2e8f0; border-radius: 8px; cursor: pointer; transition: 0.2s; background: #fafafa;" onmouseover="this.style.borderColor='var(--secondary)'" onmouseout="this.style.borderColor='#e2e8f0'">
-              <span style="font-weight: 700; color: #1e293b;"><i class="far fa-credit-card" style="margin-right: 12px; color: var(--secondary);"></i> Credit / Debit Card</span>
-              <img src="./imagevisa.jpg" alt="Visa" style="height: 22px;" />
-            </div>
-            <div onclick="toStep3('bank')" style="display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; border: 2px solid #e2e8f0; border-radius: 8px; cursor: pointer; transition: 0.2s; background: #fafafa;" onmouseover="this.style.borderColor='var(--secondary)'" onmouseout="this.style.borderColor='#e2e8f0'">
-              <span style="font-weight: 700; color: #1e293b;"><i class="fas fa-university" style="margin-right: 12px; color: var(--secondary);"></i> Bank Wire Transfer</span>
-              <i class="fas fa-chevron-right" style="color: #cbd5e1;"></i>
-            </div>
+          <p style="font-weight: 700; font-size: 1.1rem; color: #1e293b; margin-bottom: 20px; text-align: center;">Donate using Mobile Money</p>
+          <div onclick="toStep3('momo')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toStep3('momo')}" style="display: flex; align-items: center; justify-content: space-between; padding: 18px 20px; border: 2px solid var(--secondary); border-radius: 8px; cursor: pointer; background: #fffaf5;">
+            <span style="font-weight: 700; color: #1e293b;"><i class="fas fa-mobile-alt" style="margin-right: 12px; color: var(--secondary);"></i> MTN MoMo / Airtel Money</span>
+            <img src="./momo.jpg" alt="Mobile Money" style="height: 22px;" />
           </div>
         </div>
 
         <div id="don-step-3" style="display: none;">
           <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 25px; cursor: pointer;" onclick="backToStep2()">
-            <i class="fas fa-arrow-left" style="color: var(--gray); font-size: 0.9rem;"></i> <span style="font-size: 0.9rem; color: var(--gray); font-weight: 600;">Change method</span>
+            <i class="fas fa-arrow-left" style="color: var(--gray); font-size: 0.9rem;"></i>
+            <span style="font-size: 0.9rem; color: var(--gray); font-weight: 600;">Change method</span>
           </div>
-
-          <form id="dynamic-payment-form">
-            <div id="fields-momo" style="display: none;">
-              <h4 style="margin-bottom: 15px; color: #1e293b;">Mobile Money Details</h4>
-              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px;">
-                <input type="text" id="momo-first" placeholder="First Name*" required style="padding: 12px; border: 1px solid #cbd5e1; border-radius: 6px; margin:0;" />
-                <input type="text" id="momo-last" placeholder="Last Name*" required style="padding: 12px; border: 1px solid #cbd5e1; border-radius: 6px; margin:0;" />
-              </div>
-              <input type="email" id="momo-email" placeholder="Email Address*" required style="padding: 12px; border: 1px solid #cbd5e1; border-radius: 6px; margin-bottom: 12px;" />
-              <div style="display: flex; gap: 6px; margin-bottom: 20px;">
-                <select id="momo-country" style="padding: 12px; border: 1px solid #cbd5e1; border-radius: 6px; background: #fff; width: 95px;">
-                  <option>🇷🇼 +250</option>
-                  <option>🇰🇪 +254</option>
-                  <option>🇺🇬 +256</option>
-                </select>
-                <input type="text" id="momo-phone" placeholder="Phone Number*" required style="flex: 1; padding: 12px; border: 1px solid #cbd5e1; border-radius: 6px; margin:0;" />
-              </div>
-              <button type="submit" class="btn btn-secondary" style="width: 100%; padding: 14px; font-weight: 700; border-radius: 6px;">Submit MoMo Donation</button>
+          <div id="fields-momo">
+            <h4 style="margin-bottom: 12px; color: #1e293b;">Donate with Mobile Money</h4>
+            <p style="color: #475569; margin-bottom: 16px;">Send the donation amount below from your MTN MoMo or Airtel Money account.</p>
+            <div style="background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px; padding: 18px; text-align: center; margin-bottom: 18px;">
+              <p style="font-size: 0.9rem; color: #9a3412; font-weight: 700;">Amount to send</p>
+              <p id="momo-donation-amount" style="font-size: 1.7rem; font-weight: 800; color: #1e293b; margin: 4px 0 14px;">RWF 0</p>
+              <p style="font-size: 0.9rem; color: #9a3412; font-weight: 700;">Mobile Money number</p>
+              <p style="font-size: 1.8rem; font-weight: 800; color: #1e293b; letter-spacing: 1px;">0792157588</p>
+              <button type="button" class="btn btn-secondary" onclick="copyDonationNumber()" style="margin-top: 12px; padding: 10px 18px;"><i class="far fa-copy" style="margin-right: 6px;"></i> Copy number</button>
+              <p id="copy-number-status" aria-live="polite" style="font-size: 0.85rem; margin-top: 8px; color: #166534;"></p>
             </div>
-
-            <div id="fields-card" style="display: none;">
-              <h4 style="margin-bottom: 15px; color: #1e293b;">Secure Card Checkout</h4>
-              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px;">
-                <input type="text" id="card-first" placeholder="First Name*" required style="padding: 12px; border: 1px solid #cbd5e1; border-radius: 6px; margin:0;" />
-                <input type="text" id="card-last" placeholder="Last Name*" required style="padding: 12px; border: 1px solid #cbd5e1; border-radius: 6px; margin:0;" />
-              </div>
-              <input type="email" id="card-email" placeholder="Email Address*" required style="padding: 12px; border: 1px solid #cbd5e1; border-radius: 6px; margin-bottom: 12px;" />
-              <input type="text" id="card-number" placeholder="Card Number*" required style="padding: 12px; border: 1px solid #cbd5e1; border-radius: 6px; margin-bottom: 12px;" />
-              <div style="display: flex; gap: 10px; margin-bottom: 20px;">
-                <input type="text" id="card-expiry" placeholder="MM / YY*" required style="width: 50%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 6px; margin:0;" />
-                <input type="text" id="card-cvc" placeholder="CVC*" required style="width: 50%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 6px; margin:0;" />
-              </div>
-              <button type="submit" class="btn btn-secondary" style="width: 100%; padding: 14px; font-weight: 700; border-radius: 6px;">Authorize Payment</button>
-            </div>
-
-            <div id="fields-bank" style="display: none;">
-              <h4 style="margin-bottom: 10px; color: #1e293b;">Bank Wire Request</h4>
-              <p style="font-size: 0.85rem; color: var(--gray); margin-bottom: 15px; line-height: 1.4;">Enter your details to generate local regional Swift settlement information directly to your email.</p>
-              <input type="text" id="bank-name" placeholder="Full Name / Organization Name*" required style="padding: 12px; border: 1px solid #cbd5e1; border-radius: 6px; margin-bottom: 12px;" />
-              <input type="email" id="bank-email" placeholder="Email Address*" required style="padding: 12px; border: 1px solid #cbd5e1; border-radius: 6px; margin-bottom: 20px;" />
-              <button type="submit" class="btn btn-secondary" style="width: 100%; padding: 14px; font-weight: 700; border-radius: 6px;">Email Me Swift Instructions</button>
-            </div>
-          </form>
+            <ol style="padding-left: 22px; color: #475569; margin-bottom: 18px;">
+              <li>Open MTN MoMo or Airtel Money on your phone.</li>
+              <li>Send the exact amount to <strong>0792157588</strong>.</li>
+              <li>Keep your transaction confirmation/reference.</li>
+              <li>Email the transaction reference to <strong>foundationfuturelight@gmail.com</strong> so the team can verify it.</li>
+            </ol>
+            <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 16px;">This is a manual transfer. The website cannot automatically confirm that payment was received.</p>
+            <a id="email-donation-receipt" class="btn btn-secondary" href="mailto:foundationfuturelight@gmail.com?subject=Future%20Light%20Donation%20Receipt" style="display: block; text-align: center; padding: 14px; border-radius: 6px;">Email donation reference</a>
+          </div>
         </div>
 
         <div id="donation-footer-logos" style="margin-top: 25px; border-top: 1px solid #f1f5f9; padding-top: 15px; display: flex; justify-content: center; align-items: center; gap: 15px; flex-wrap: wrap;">
-          <img src="./momo.jpg" alt="MoMo" style="height: 18px; object-fit: contain;" />
-          <img src="./imagevisa.jpg" alt="Visa" style="height: 18px; object-fit: contain;" />
-          <img src="./banks.jpg" alt="Wire" style="height: 18px; object-fit: contain;" />
+          <img src="./momo.jpg" alt="Mobile Money" style="height: 18px; object-fit: contain;" />
         </div>
-
       </div>
     </section>
-   
+
     <section id="volunteer">
       <div class="section-header">
         <h2>Get Involved</h2>
