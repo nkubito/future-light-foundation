@@ -167,3 +167,10 @@
     width: 100%;
   }
 }
+
+/* Donation choice controls */
+.amount-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.amount-options label{display:flex;align-items:center;gap:9px;padding:13px 14px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--navy);font-weight:700;cursor:pointer}
+.amount-options label:has(input:checked){border-color:var(--blue);background:#eef6fc;box-shadow:0 0 0 1px var(--blue)}
+.amount-options input{accent-color:var(--blue)}
+@media(max-width:480px){.amount-options{grid-template-columns:1fr 1fr}}
