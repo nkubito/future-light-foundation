@@ -97,6 +97,9 @@ document.addEventListener('DOMContentLoaded', function () {
     if (has(['gikundiro', 'yves', 'operations coordinator', 'projects coordinator'])) {
       return answer('Gikundiro Yves is our Projects & Operations Coordinator. He helps organize activities, coordinate tasks and follow up on project plans.', { person: 'yves' });
     }
+    if (has(['manzi', 'prince', 'general advisor', 'general adviser'])) {
+      return answer('MANZI Prince serves as our General Advisor. He provides innovative ideas, guides project planning and implementation, and advises the team on strategies to achieve the foundation’s mission and long-term goals.', { person: 'manzi' });
+    }
     if (has(['team', 'team members', 'staff', 'people behind', 'who works', 'who are the members', 'list the members', 'all members', 'leadership'])) {
       return answer('Meet the people behind Future Light Foundation:', { team: true });
     }
@@ -144,7 +147,8 @@ document.addEventListener('DOMContentLoaded', function () {
         { key: 'samuel', name: 'HAKIZIMANA Samuel', role: 'Partnerships & External Relations Officer', image: './samuel.jpeg' },
         { key: 'boss', name: 'MACUNDA Boss', role: 'Communications & Public Relations Officer', image: './boss.jpeg' },
         { key: 'jean', name: 'Jean Bertrand Rukundo Rutwaza', role: 'Community Engagement & Programs Officer', image: './jean%20bertrand.jpeg' },
-        { key: 'yves', name: 'Gikundiro Yves', role: 'Projects & Operations Coordinator', image: './gikundiro.jpeg' }
+        { key: 'yves', name: 'Gikundiro Yves', role: 'Projects & Operations Coordinator', image: './gikundiro.jpeg' },
+        { key: 'manzi', name: 'MANZI Prince', role: 'General Advisor', image: './manzi.jpeg' }
       ];
       var list = data.team ? people : people.filter(function (person) { return person.key === data.person; });
       var cards = document.createElement('div');
