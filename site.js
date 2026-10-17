@@ -66,55 +66,120 @@ document.addEventListener('DOMContentLoaded', function () {
 (function () {
   var maxMessageLength = 600;
 
-  /* Free, rule-based answers: no external AI API or paid API key required. */
+  /* Free, topic-based answer engine. It never calls a paid AI API. */
   function findAnswer(question) {
     var q = question.toLowerCase()
-      .normalize('NFD').replace(/[\\u0300-\\u036f]/g, '')
-      .replace(/[^a-z0-9\\s@.+-]/g, ' ')
-      .replace(/\\s+/g, ' ').trim();
+      .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+      .replace(/[^a-z0-9\s@.+-]/g, ' ')
+      .replace(/\s+/g, ' ').trim();
 
     var has = function (words) { return words.some(function (word) { return q.includes(word); }); };
+    var answer = function (text, extra) { return Object.assign({ text: text }, extra || {}); };
 
-    if (has(['hello', 'hi ', 'hey', 'good morning', 'good afternoon', 'good evening', 'muraho'])) {
-      return 'Hello and welcome to Future Light Foundation! I can answer questions about our mission, team, volunteering, contact details and ways to support our work.';
+    if (has(['hello', 'hi', 'hey', 'good morning', 'good afternoon', 'good evening', 'muraho', 'amakuru'])) {
+      return answer('Hello and welcome to Future Light Foundation! I’m here to help you learn about our mission, people, volunteering and how to contact us. What would you like to know?');
     }
-    if (has(['mission', 'purpose', 'goal', 'why was the foundation', 'what do you do', 'what does the foundation do'])) {
-      return 'Future Light Foundation aims to support vulnerable children, including children facing poverty and orphanhood, and to help create better opportunities for their future. We are continuing to establish our organization and programs.';
+    if (has(['who is the founder', 'who is founder', 'founder name', 'founders name', 'who founded', 'who started', 'ceo', 'visionary director', 'emmanuel', 'tuyishime'])) {
+      return answer('Our founder is Tuyishime Emmanuel, the Founder & Visionary Director of Future Light Foundation. He is committed to building a more supportive future for vulnerable children and young people.', { person: 'founder' });
     }
-    if (has(['who are you', 'about the foundation', 'what is future light', 'tell me about', 'about future light', 'foundation about'])) {
-      return 'Future Light Foundation is a developing community-focused initiative with a mission to support vulnerable children and help improve their opportunities. Our organization is still being established, so not every program or service is currently active.';
+    if (has(['samuel', 'hakizimana'])) {
+      return answer('HAKIZIMANA Samuel serves as our Partnerships & External Relations Officer. He focuses on building relationships with organizations, potential donors and partners.', { person: 'samuel' });
     }
-    if (has(['volunteer', 'volunteering', 'join the team', 'join your community', 'help you', 'work with you'])) {
-      return 'You can express your interest through the Volunteer page on this website. Fill in your full name, email address and skills, then submit the form. The foundation can review your application and follow up. Please note that our operations are still being established.';
+    if (has(['macunda', 'boss']) || (has(['communication', 'public relations']) && has(['officer', 'team', 'who']))) {
+      return answer('MACUNDA Boss is our Communications & Public Relations Officer. He supports public awareness and shares the foundation’s mission, activities and stories with the wider community.', { person: 'boss' });
     }
-    if (has(['contact', 'email', 'phone number', 'telephone', 'call you', 'reach you', 'address'])) {
-      return 'You can contact Future Light Foundation by email at foundationfuturelight@gmail.com or by phone at 0790161576. You can also visit our Instagram page: @futurelight_foundation.';
+    if (has(['jean bertrand', 'rutwaza', 'community engagement'])) {
+      return answer('Jean Bertrand Rukundo Rutwaza serves as our Community Engagement & Programs Officer. He helps connect with communities, listen to local needs and coordinate activities.', { person: 'jean' });
     }
-    if (has(['donat', 'give money', 'send money', 'mobile money', 'momo', 'payment', 'pay'])) {
-      return 'Thank you for wanting to support Future Light Foundation. Our registration and operations are still being established, so online donation and payment processing are not yet confirmed as available. Please contact foundationfuturelight@gmail.com before sending any money.';
+    if (has(['gikundiro', 'yves', 'operations coordinator', 'projects coordinator'])) {
+      return answer('Gikundiro Yves is our Projects & Operations Coordinator. He helps organize activities, coordinate tasks and follow up on project plans.', { person: 'yves' });
     }
-    if (has(['team', 'founder', 'ceo', 'director', 'emmanuel', 'samuel', 'boss', 'yves', 'bertrand', 'who leads'])) {
-      return 'Our current team listing is: Tuyishime Emmanuel — Founder & Visionary Director; HAKIZIMANA Samuel — Partnerships & External Relations Officer; MACUNDA Boss — Communications & Public Relations Officer; Jean Bertrand Rukundo Rutwaza — Community Engagement & Programs Officer; and Gikundiro Yves — Projects & Operations Coordinator. See the About page for team details.';
+    if (has(['team', 'team members', 'staff', 'people behind', 'who works', 'who are the members', 'list the members', 'all members', 'leadership'])) {
+      return answer('Meet the people behind Future Light Foundation:', { team: true });
+    }
+    if (has(['volunteer', 'volunteering', 'volunteer with', 'join the team', 'join your community', 'help the foundation', 'work with you', 'become a volunteer', 'how can i help'])) {
+      return answer('We’d be happy to hear from people who want to contribute their time and skills. Visit our Volunteer page, complete the form with your name, email and skills, and submit it. The team can review your interest and follow up. Our operations are still being established, so opportunities may depend on current capacity.', { link: { href: './volunteer.html', label: 'Visit the Volunteer page' } });
+    }
+    if (has(['mission', 'purpose', 'goal', 'why was the foundation', 'what do you do', 'what does the foundation do', 'why do you exist'])) {
+      return answer('Our mission is to support vulnerable children and young people, including those affected by poverty, loss or difficult circumstances. We aim to connect them with care, learning opportunities and community support so they can build a brighter future. We are still developing our organization and programs.');
+    }
+    if (has(['about the foundation', 'what is future light', 'tell me about', 'about future light', 'who are you', 'your story', 'foundation about'])) {
+      return answer('Future Light Foundation is a Rwanda-focused, community-minded initiative built on the belief that every child deserves dignity, care and a real opportunity to grow. We aim to support vulnerable children and young people through care, education and community connection. Our organization and programs are still being established.', { link: { href: './about.html', label: 'Read more about us' } });
+    }
+    if (has(['contact', 'email', 'phone number', 'telephone', 'call you', 'reach you', 'address', 'how to reach'])) {
+      return answer('You can contact Future Light Foundation at foundationfuturelight@gmail.com or call 0790161576. We are based in Kigali, Rwanda. You can also follow @futurelight_foundation on Instagram.', { link: { href: './contact.html', label: 'Open contact page' } });
+    }
+    if (has(['donat', 'give money', 'send money', 'mobile money', 'momo', 'payment', 'pay', 'financial support', 'support financially'])) {
+      return answer('Thank you for wanting to support our work. Our registration and operations are still being established, and online donation/payment processing is not confirmed as ready. Please contact foundationfuturelight@gmail.com before sending money so you can confirm the current arrangements.', { link: { href: './donate.html', label: 'View donation information' } });
     }
     if (has(['instagram', 'social media', 'facebook', 'follow you', 'photos', 'gallery', 'events', 'news', 'updates'])) {
-      return 'You can follow @futurelight_foundation on Instagram for foundation updates, activities and community news. You can also check the Gallery and News/Events sections of this website when available.';
+      return answer('You can follow @futurelight_foundation on Instagram for updates. You can also explore the Gallery and News/Events sections of our website as information becomes available.', { link: { href: 'https://www.instagram.com/futurelight_foundation/', label: 'Visit our Instagram' } });
     }
-    if (has(['where are you', 'location', 'based in', 'which country', 'rwanda', 'kigali'])) {
-      return 'Future Light Foundation is a Rwanda-focused initiative. For a specific office address or meeting location, please contact foundationfuturelight@gmail.com to confirm the latest details.';
+    if (has(['where are you', 'location', 'based in', 'which country', 'rwanda', 'kigali', 'office'])) {
+      return answer('Future Light Foundation is focused on Rwanda and is based in Kigali. Please email foundationfuturelight@gmail.com to confirm specific office or meeting details.');
     }
-    if (has(['register', 'registration', 'legal', 'officially registered', 'certificate'])) {
-      return 'Future Light Foundation is still in the process of establishing its registration and operations. We cannot currently confirm that registration is complete.';
+    if (has(['register', 'registration', 'legal', 'officially registered', 'certificate', 'registered'])) {
+      return answer('Future Light Foundation is still establishing its registration and operations. We cannot currently confirm that the registration process is complete.');
     }
-    if (has(['program', 'project', 'activity', 'activities', 'children', 'orphans', 'poor'])) {
-      return 'Our mission focuses on supporting vulnerable children, including children affected by poverty and orphanhood. Specific programs and activities are still being developed, so please contact foundationfuturelight@gmail.com for the latest confirmed information.';
+    if (has(['program', 'project', 'activity', 'activities', 'children', 'orphans', 'poor', 'education', 'school'])) {
+      return answer('Our focus is on supporting vulnerable children and young people through care, learning opportunities and community connection. Specific programs are still being developed, so contact foundationfuturelight@gmail.com for the latest confirmed information.', { link: { href: './programs.html', label: 'Explore our work' } });
     }
     if (has(['thank', 'thanks', 'thank you'])) {
-      return 'You are welcome! Thank you for your interest in Future Light Foundation.';
+      return answer('You’re welcome! Thank you for taking an interest in Future Light Foundation. Every thoughtful question helps people understand our mission.');
     }
-    if (has(['help', 'what can i ask', 'what do you know', 'questions'])) {
-      return 'You can ask me about our mission, the foundation, our team, volunteering, contact details, Instagram, programs, registration status or donations.';
+    if (has(['help', 'what can i ask', 'what do you know', 'questions', 'topics'])) {
+      return answer('You can ask me about our mission, founder, any team member, volunteering, programs, contact details, Instagram, registration or donations. For example: “Who is the founder?” or “How can I volunteer?”');
     }
-    return 'I can answer questions about Future Light Foundation when I recognize a supported topic. Try asking about our mission, team, volunteering, contact details, Instagram or donation status. For other questions, email foundationfuturelight@gmail.com.';
+    return answer('I may not have understood that question yet. I can help with Future Light Foundation topics such as our mission, founder, team members, volunteering, programs, contact details, registration and donation status. You can also email foundationfuturelight@gmail.com.');
+  }
+
+  function renderAnswer(target, data) {
+    target.textContent = data.text;
+    if (data.person || data.team) {
+      var people = [
+        { key: 'founder', name: 'Tuyishime Emmanuel', role: 'Founder & Visionary Director', image: './tuyishime.jpeg' },
+        { key: 'samuel', name: 'HAKIZIMANA Samuel', role: 'Partnerships & External Relations Officer', image: './samuel.jpeg' },
+        { key: 'boss', name: 'MACUNDA Boss', role: 'Communications & Public Relations Officer', image: './boss.jpeg' },
+        { key: 'jean', name: 'Jean Bertrand Rukundo Rutwaza', role: 'Community Engagement & Programs Officer', image: './jean%20bertrand.jpeg' },
+        { key: 'yves', name: 'Gikundiro Yves', role: 'Projects & Operations Coordinator', image: './gikundiro.jpeg' }
+      ];
+      var list = data.team ? people : people.filter(function (person) { return person.key === data.person; });
+      var cards = document.createElement('div');
+      cards.className = 'fla-team-results';
+      list.forEach(function (person) {
+        var card = document.createElement('div');
+        card.className = 'fla-person-result';
+        var img = document.createElement('img');
+        img.src = person.image;
+        img.alt = person.name;
+        img.loading = 'lazy';
+        var details = document.createElement('div');
+        var name = document.createElement('strong');
+        name.textContent = person.name;
+        var role = document.createElement('small');
+        role.textContent = person.role;
+        details.append(name, role);
+        card.append(img, details);
+        cards.appendChild(card);
+      });
+      target.appendChild(cards);
+      var aboutLink = document.createElement('a');
+      aboutLink.href = './about.html';
+      aboutLink.className = 'fla-answer-link';
+      aboutLink.textContent = 'Meet the full team';
+      target.appendChild(aboutLink);
+    }
+    if (data.link) {
+      var link = document.createElement('a');
+      link.href = data.link.href;
+      link.className = 'fla-answer-link';
+      link.textContent = data.link.label;
+      if (/^https?:\/\//.test(data.link.href)) {
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+      }
+      target.appendChild(link);
+    }
   }
 
   function createChat() {
@@ -138,15 +203,17 @@ document.addEventListener('DOMContentLoaded', function () {
     panel.innerHTML = `
       <div class="fla-chat-header">
         <div class="fla-chat-avatar" aria-hidden="true">FL</div>
-        <div><strong>Ask Future Light AI</strong><small>Information about our mission</small></div>
+        <div><strong>Ask Future Light AI</strong><small>Friendly help about our foundation</small></div>
         <button class="fla-chat-close" type="button" aria-label="Close chat">×</button>
       </div>
       <div class="fla-chat-messages" id="fla-chat-messages" aria-live="polite">
-        <div class="fla-chat-message assistant">Hello! I can help you learn about Future Light Foundation, our team and ways to get involved. What would you like to know?</div>
+        <div class="fla-chat-message assistant">Hello! 👋 Welcome to Future Light Foundation. Ask me about our mission, founder, team, volunteering or how to contact us.</div>
       </div>
       <div class="fla-chat-suggestions" aria-label="Suggested questions">
         <button type="button">What is our mission?</button>
         <button type="button">How can I volunteer?</button>
+        <button type="button">Who is the founder?</button>
+        <button type="button">Meet the team</button>
         <button type="button">How can I contact you?</button>
       </div>
       <form class="fla-chat-form" id="fla-chat-form">
@@ -186,6 +253,10 @@ document.addEventListener('DOMContentLoaded', function () {
       var button = event.target.closest('button');
       if (button) { input.value = button.textContent; form.requestSubmit(); }
     });
+    input.addEventListener('input', function () {
+      if (input.value.trim()) suggestions.hidden = true;
+      else if (!messages.querySelector('.fla-chat-message.user')) suggestions.hidden = false;
+    });
     form.addEventListener('submit', async function (event) {
       event.preventDefault();
       var question = input.value.trim();
@@ -195,10 +266,10 @@ document.addEventListener('DOMContentLoaded', function () {
       sendButton.disabled = true;
       input.disabled = true;
       suggestions.hidden = true;
-      var pending = addMessage('Thinking…', 'assistant');
+      var pending = addMessage('One moment…', 'assistant');
       try {
         /* Local matching is immediate and free; it does not call the backend or OpenAI. */
-        pending.textContent = findAnswer(question);
+        renderAnswer(pending, findAnswer(question));
       } finally {
         sendButton.disabled = false;
         input.disabled = false;
