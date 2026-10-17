@@ -64,8 +64,58 @@ document.addEventListener('DOMContentLoaded', function () {
 
 /* Ask Future Light AI: injected on every page that loads site.js. */
 (function () {
-  var API_URL = 'https://future-light-backend.onrender.com/api/ask';
   var maxMessageLength = 600;
+
+  /* Free, rule-based answers: no external AI API or paid API key required. */
+  function findAnswer(question) {
+    var q = question.toLowerCase()
+      .normalize('NFD').replace(/[\\u0300-\\u036f]/g, '')
+      .replace(/[^a-z0-9\\s@.+-]/g, ' ')
+      .replace(/\\s+/g, ' ').trim();
+
+    var has = function (words) { return words.some(function (word) { return q.includes(word); }); };
+
+    if (has(['hello', 'hi ', 'hey', 'good morning', 'good afternoon', 'good evening', 'muraho'])) {
+      return 'Hello and welcome to Future Light Foundation! I can answer questions about our mission, team, volunteering, contact details and ways to support our work.';
+    }
+    if (has(['mission', 'purpose', 'goal', 'why was the foundation', 'what do you do', 'what does the foundation do'])) {
+      return 'Future Light Foundation aims to support vulnerable children, including children facing poverty and orphanhood, and to help create better opportunities for their future. We are continuing to establish our organization and programs.';
+    }
+    if (has(['who are you', 'about the foundation', 'what is future light', 'tell me about', 'about future light', 'foundation about'])) {
+      return 'Future Light Foundation is a developing community-focused initiative with a mission to support vulnerable children and help improve their opportunities. Our organization is still being established, so not every program or service is currently active.';
+    }
+    if (has(['volunteer', 'volunteering', 'join the team', 'join your community', 'help you', 'work with you'])) {
+      return 'You can express your interest through the Volunteer page on this website. Fill in your full name, email address and skills, then submit the form. The foundation can review your application and follow up. Please note that our operations are still being established.';
+    }
+    if (has(['contact', 'email', 'phone number', 'telephone', 'call you', 'reach you', 'address'])) {
+      return 'You can contact Future Light Foundation by email at foundationfuturelight@gmail.com or by phone at 0790161576. You can also visit our Instagram page: @futurelight_foundation.';
+    }
+    if (has(['donat', 'give money', 'send money', 'mobile money', 'momo', 'payment', 'pay'])) {
+      return 'Thank you for wanting to support Future Light Foundation. Our registration and operations are still being established, so online donation and payment processing are not yet confirmed as available. Please contact foundationfuturelight@gmail.com before sending any money.';
+    }
+    if (has(['team', 'founder', 'ceo', 'director', 'emmanuel', 'samuel', 'boss', 'yves', 'bertrand', 'who leads'])) {
+      return 'Our current team listing is: Tuyishime Emmanuel — Founder & Visionary Director; HAKIZIMANA Samuel — Partnerships & External Relations Officer; MACUNDA Boss — Communications & Public Relations Officer; Jean Bertrand Rukundo Rutwaza — Community Engagement & Programs Officer; and Gikundiro Yves — Projects & Operations Coordinator. See the About page for team details.';
+    }
+    if (has(['instagram', 'social media', 'facebook', 'follow you', 'photos', 'gallery', 'events', 'news', 'updates'])) {
+      return 'You can follow @futurelight_foundation on Instagram for foundation updates, activities and community news. You can also check the Gallery and News/Events sections of this website when available.';
+    }
+    if (has(['where are you', 'location', 'based in', 'which country', 'rwanda', 'kigali'])) {
+      return 'Future Light Foundation is a Rwanda-focused initiative. For a specific office address or meeting location, please contact foundationfuturelight@gmail.com to confirm the latest details.';
+    }
+    if (has(['register', 'registration', 'legal', 'officially registered', 'certificate'])) {
+      return 'Future Light Foundation is still in the process of establishing its registration and operations. We cannot currently confirm that registration is complete.';
+    }
+    if (has(['program', 'project', 'activity', 'activities', 'children', 'orphans', 'poor'])) {
+      return 'Our mission focuses on supporting vulnerable children, including children affected by poverty and orphanhood. Specific programs and activities are still being developed, so please contact foundationfuturelight@gmail.com for the latest confirmed information.';
+    }
+    if (has(['thank', 'thanks', 'thank you'])) {
+      return 'You are welcome! Thank you for your interest in Future Light Foundation.';
+    }
+    if (has(['help', 'what can i ask', 'what do you know', 'questions'])) {
+      return 'You can ask me about our mission, the foundation, our team, volunteering, contact details, Instagram, programs, registration status or donations.';
+    }
+    return 'I can answer questions about Future Light Foundation when I recognize a supported topic. Try asking about our mission, team, volunteering, contact details, Instagram or donation status. For other questions, email foundationfuturelight@gmail.com.';
+  }
 
   function createChat() {
     if (document.getElementById('fla-chat-launcher')) return;
@@ -147,16 +197,8 @@ document.addEventListener('DOMContentLoaded', function () {
       suggestions.hidden = true;
       var pending = addMessage('Thinking…', 'assistant');
       try {
-        var response = await fetch(API_URL, {
-          method: 'POST',
-          headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify({message: question})
-        });
-        var result = await response.json().catch(function () { return {}; });
-        if (!response.ok) throw new Error(result.message || 'The assistant is temporarily unavailable.');
-        pending.textContent = result.answer || 'I could not prepare an answer just now. Please contact the foundation directly.';
-      } catch (error) {
-        pending.textContent = error.message || 'I could not connect right now. Please try again later or contact foundationfuturelight@gmail.com.';
+        /* Local matching is immediate and free; it does not call the backend or OpenAI. */
+        pending.textContent = findAnswer(question);
       } finally {
         sendButton.disabled = false;
         input.disabled = false;
