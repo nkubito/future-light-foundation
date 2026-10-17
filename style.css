@@ -228,3 +228,16 @@
 .fla-chat-disclaimer{margin:0;padding:0 14px 11px;background:#fff;color:#748391;font-size:.7rem;line-height:1.4}
 @media(max-width:480px){.fla-chat-launcher{right:14px;bottom:14px;padding:11px 14px}.fla-chat-panel{right:10px;bottom:72px;width:calc(100vw - 20px);height:min(590px,calc(100dvh - 92px))}}
 @media(prefers-reduced-motion:reduce){.fla-chat-panel,.fla-chat-launcher{transition:none}}
+
+
+/* Rich profile cards inside the free Ask Future Light assistant */
+.fla-team-results{display:grid;gap:10px;margin-top:13px;width:100%}
+.fla-person-result{display:flex;align-items:center;gap:12px;padding:10px;border:1px solid #e1e8ed;border-radius:10px;background:#fff}
+.fla-person-result img{display:block;width:58px;height:58px;flex:0 0 58px;object-fit:cover;object-position:center 28%;border-radius:50%;border:2px solid #edf2f5}
+.fla-person-result strong{display:block;color:#173b56;font-size:.86rem;line-height:1.35}
+.fla-person-result small{display:block;margin-top:4px;color:#667887;font-size:.75rem;line-height:1.4}
+.fla-answer-link{display:inline-flex;align-items:center;justify-content:center;margin-top:11px;padding:8px 11px;border-radius:7px;background:#edf5fa;color:#17476c;font-size:.8rem;font-weight:800;text-decoration:none}
+.fla-answer-link:hover{background:#dfeef7;text-decoration:underline}
+.fla-chat-suggestions[hidden]{display:none}
+.fla-chat-suggestions{max-height:94px;overflow-y:auto}
+.fla-chat-message.assistant{max-width:96%}
