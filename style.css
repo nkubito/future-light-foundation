@@ -241,3 +241,14 @@
 .fla-chat-suggestions[hidden]{display:none}
 .fla-chat-suggestions{max-height:94px;overflow-y:auto}
 .fla-chat-message.assistant{max-width:96%}
+
+
+/* Chatbot contact choices and suggested next questions */
+.fla-choice-row{display:flex;gap:9px;margin-top:12px}
+.fla-choice-button{min-width:70px;border:1px solid #1769aa;border-radius:8px;padding:9px 17px;background:#1769aa;color:#fff;font-size:.84rem;font-weight:800;cursor:pointer}
+.fla-choice-button[data-fla-choice="contact-no"]{background:#fff;color:#17476c}
+.fla-choice-button:disabled{opacity:.55;cursor:default}
+.fla-followup-questions{display:flex;flex-wrap:wrap;gap:7px;margin-top:13px;padding-top:11px;border-top:1px solid #e4ebef}
+.fla-followup-questions strong{display:block;width:100%;font-size:.8rem;color:#29485e;margin-bottom:2px}
+.fla-followup-question{border:1px solid #cbdbe6;border-radius:999px;background:#fff;color:#19476b;padding:7px 10px;font-size:.76rem;font-weight:700;text-align:left;cursor:pointer}
+.fla-followup-question:hover{background:#edf5fa}
