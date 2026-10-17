@@ -180,13 +180,13 @@
 .team-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;align-items:stretch}
 .team-card{overflow:hidden;background:#fff;border:1px solid var(--line);border-radius:10px;box-shadow:0 8px 26px rgba(16,43,70,.055);transition:transform .2s,box-shadow .2s}
 .team-card:hover{transform:translateY(-3px);box-shadow:0 14px 32px rgba(16,43,70,.10)}
-.team-photo{display:flex;width:100%;height:250px;object-fit:cover;object-position:center 35%;background:#edf3f6}
+.team-photo{display:block;width:156px;height:156px;margin:26px auto 0;object-fit:cover;object-position:center 28%;border-radius:50%;border:4px solid #fff;outline:2px solid #e5edf2;box-shadow:0 8px 22px rgba(16,43,70,.12);background:#edf3f6}
 .team-placeholder{flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--navy);background:linear-gradient(145deg,#edf5fa 0%,#fff3e6 100%);border-bottom:1px solid var(--line)}
 .team-placeholder span{display:grid;place-items:center;width:82px;height:82px;border-radius:50%;background:#fff;border:1px solid #dbe5eb;color:var(--blue);font:800 1.5rem Manrope,sans-serif;letter-spacing:.04em}
 .team-placeholder small{font-size:.75rem;font-weight:700;color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
-.team-card-body{padding:23px 24px 25px}
+.team-card-body{padding:22px 24px 27px;text-align:center}
 .team-card-body h3{margin:0 0 12px;font-size:1.2rem;overflow-wrap:anywhere}
 .team-card-body>p:last-child{font-size:.94rem;line-height:1.7;margin:0}
 .team-role{min-height:42px;margin:0 0 10px!important;color:#a85b17;font-size:.76rem;font-weight:800;letter-spacing:.055em;line-height:1.45;text-transform:uppercase}
-@media(max-width:950px){.team-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.team-photo{height:230px}}
-@media(max-width:600px){.team-grid{grid-template-columns:1fr;gap:17px}.team-photo{height:280px}.team-card-body{padding:22px}.team-role{min-height:0}}
+@media(max-width:950px){.team-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.team-photo{width:148px;height:148px}}
+@media(max-width:600px){.team-grid{grid-template-columns:1fr;gap:17px}.team-photo{width:150px;height:150px;margin-top:23px}.team-card-body{padding:22px}.team-role{min-height:0}}
