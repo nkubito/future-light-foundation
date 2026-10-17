@@ -75,8 +75,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     var has = function (words) { return words.some(function (word) { return q.includes(word); }); };
     var answer = function (text, extra) { return Object.assign({ text: text }, extra || {}); };
+    var yesNo = function () { return /^(yes|yes please|yeah|yep|sure|okay|ok|please|contact|contact them|no|no thanks|no thank you|not now|maybe|later)$/i.test(q); };
 
-    if (has(['hello', 'hi', 'hey', 'good morning', 'good afternoon', 'good evening', 'muraho', 'amakuru'])) {
+    if (yesNo()) return answer('Would you like to contact Future Light Foundation? Choose Yes or No below.', { contactChoice: true });
+
+    if (/^(hello|hi|hey|good morning|good afternoon|good evening|muraho|amakuru)$/.test(q)) {
       return answer('Hello and welcome to Future Light Foundation! I’m here to help you learn about our mission, people, volunteering and how to contact us. What would you like to know?');
     }
     if (has(['who is the founder', 'who is founder', 'founder name', 'founders name', 'who founded', 'who started', 'ceo', 'visionary director', 'emmanuel', 'tuyishime'])) {
@@ -130,7 +133,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (has(['help', 'what can i ask', 'what do you know', 'questions', 'topics'])) {
       return answer('You can ask me about our mission, founder, any team member, volunteering, programs, contact details, Instagram, registration or donations. For example: “Who is the founder?” or “How can I volunteer?”');
     }
-    return answer('I may not have understood that question yet. I can help with Future Light Foundation topics such as our mission, founder, team members, volunteering, programs, contact details, registration and donation status. You can also email foundationfuturelight@gmail.com.');
+    return answer('Thank you for your question! I’m here to help with Future Light Foundation, so please ask me something related to our mission, founder, team, volunteering, programs, donations or activities. Would you like to contact our team for more information?', { contactChoice: true, suggestions: true });
   }
 
   function renderAnswer(target, data) {
@@ -168,6 +171,35 @@ document.addEventListener('DOMContentLoaded', function () {
       aboutLink.className = 'fla-answer-link';
       aboutLink.textContent = 'Meet the full team';
       target.appendChild(aboutLink);
+    }
+    if (data.contactChoice) {
+      var choices = document.createElement('div');
+      choices.className = 'fla-choice-row';
+      [['Yes', 'contact-yes'], ['No', 'contact-no']].forEach(function (choice) {
+        var button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'fla-choice-button';
+        button.setAttribute('data-fla-choice', choice[1]);
+        button.textContent = choice[0];
+        choices.appendChild(button);
+      });
+      target.appendChild(choices);
+    }
+    if (data.suggestions) {
+      var suggested = document.createElement('div');
+      suggested.className = 'fla-followup-questions';
+      var intro = document.createElement('strong');
+      intro.textContent = 'You could ask:';
+      suggested.appendChild(intro);
+      ['What is your mission?', 'Who is the founder?', 'Who are your team members?', 'How can I volunteer?', 'How can I support your work?'].forEach(function (question) {
+        var button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'fla-followup-question';
+        button.setAttribute('data-fla-question', question);
+        button.textContent = question;
+        suggested.appendChild(button);
+      });
+      target.appendChild(suggested);
     }
     if (data.link) {
       var link = document.createElement('a');
@@ -252,6 +284,25 @@ document.addEventListener('DOMContentLoaded', function () {
     suggestions.addEventListener('click', function (event) {
       var button = event.target.closest('button');
       if (button) { input.value = button.textContent; form.requestSubmit(); }
+    });
+    messages.addEventListener('click', function (event) {
+      var choice = event.target.closest('[data-fla-choice]');
+      var questionButton = event.target.closest('[data-fla-question]');
+      if (choice) {
+        if (choice.getAttribute('data-fla-choice') === 'contact-yes') {
+          addMessage('Yes, please show me the contact details.', 'user');
+          var contact = addMessage('', 'assistant');
+          renderAnswer(contact, { text: 'Of course. You can reach Future Light Foundation at foundationfuturelight@gmail.com or call 0790161576. You can also follow @futurelight_foundation on Instagram.', link: { href: './contact.html', label: 'Open contact page' } });
+        } else {
+          addMessage('No, thank you.', 'user');
+          addMessage('No problem! I’m happy to help with another Future Light Foundation question. You can ask about our mission, founder, team, volunteering or programs.', 'assistant');
+        }
+        choice.closest('.fla-choice-row').querySelectorAll('button').forEach(function (button) { button.disabled = true; });
+        messages.scrollTop = messages.scrollHeight;
+      } else if (questionButton) {
+        input.value = questionButton.getAttribute('data-fla-question');
+        form.requestSubmit();
+      }
     });
     input.addEventListener('input', function () {
       if (input.value.trim()) suggestions.hidden = true;
