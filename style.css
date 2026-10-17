@@ -194,7 +194,7 @@
 
 /* Homepage team preview */
 .home-team-section{background:#fff}
-.home-team-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.home-team-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
 .home-team-card{display:flex;align-items:center;gap:17px;padding:20px;border:1px solid var(--line);border-radius:9px;background:#fff}
 .home-team-card img{width:92px;height:92px;flex:0 0 92px;object-fit:cover;object-position:center 28%;border-radius:50%;border:3px solid #fff;outline:1px solid #e5edf2;box-shadow:0 5px 15px rgba(16,43,70,.1)}
 .home-team-card h3{font-size:1.05rem;margin:0;overflow-wrap:anywhere}
